@@ -42,8 +42,8 @@ keithleyE.write("SYST:ZCH OFF")
 ttiSupply.write('DELTAV1 0.05')
 
 #Comprobamos que no existen ya esos ficheros
-if os.path.isfile(path + name + '_set_data_inverse.txt'):
-   os.remove(path + name + '_set_data_inverse.txt')
+if os.path.isfile(path + name + 'inverse.txt'):
+   os.remove(path + name + 'inverse.txt')
 
 for i in range(ntest):
 

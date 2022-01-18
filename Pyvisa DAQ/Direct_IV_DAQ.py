@@ -42,8 +42,8 @@ keithleyE.write("SYST:ZCH OFF")
 ttiSupply.write('DELTAV1 0.01')
 
 #Comprobamos que no existen ya esos ficheros
-if os.path.isfile(path + name + '_set_plot_direct.txt'):
-   os.remove(path + name + '_set_plot_direct.txt') 
+if os.path.isfile(path + name + 'direct.txt'):
+   os.remove(path + name + 'direct.txt') 
 
 for i in range(ntest):
 
