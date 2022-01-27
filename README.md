@@ -22,6 +22,10 @@ Adquisición de la waveform:
 
 Para la última adquisición solo se hará uso del scope y de la señal a medir. El script recoge ventanas de un tamaño especifico, se debe configurar el trigger para que sea 0.5V del SPE. Este debe realizarse en obscuridad absoluta. Al igual que los anteriores solo se debe dar al play para que funcione.
 
+Adquisicion temperatura PT100:
+
+Para la adquisicion del PT100 el setup debe ser el mismo que para las curvas IV y darle al play.
+
 Se ha comentado que los dispositivos de medición del banco se conectan por RS232, ni que decir que el scope debe de estar conectado por RJ45 al ordenador. La red + IP ya esta configurada si no se pretende cambiar.
 
 
