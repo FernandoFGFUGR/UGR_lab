@@ -38,8 +38,8 @@ void VRotura ()
     }
     ifs.close();
     
-    cout << V.size() << endl;
-    /*int n;
+    /*cout << V.size() << endl;
+    int n;
     for(n=0;n<6;n++)
     {
         cout << I[n][0] << " " << V[n][0] << endl;
@@ -57,7 +57,8 @@ void VRotura ()
             difI=I[i][j+1]-I[i][j];
             difV=V[i][j+1]-V[i][j];
             dif=(1/I[i][j])*(difI/difV);
-            result.push_back(dif);
+            if(dif<=40 && dif>-10)
+                result.push_back(dif);
         }
         VBR.push_back(result);
         result.clear();
@@ -65,9 +66,9 @@ void VRotura ()
     
     cout << VBR.size() << endl;
     
-    //Graficamos el resultado y ajustamos el pico
+    //Graficamos el resultado y ajustamos el pico con una gaussiana
     double p;
-    vector<double> vR;
+    vector<double> vR,vR1;
     
     TGraph *gr[V.size()],*gr1[V.size()];
     TF1 *f[V.size()];
@@ -79,12 +80,16 @@ void VRotura ()
     {
         gr[i]=new TGraph(V[i].size(), &V[i][0], &I[i][0]);
         gr1[i]=new TGraph(V[i].size(), &V[i][0], &VBR[i][0]);
-        f[i]=new TF1("f[i]","gaus(0)",31,34);
+        f[i]=new TF1("f[i]","gaus(0)",30,34.5);
         gr1[i]->Fit("f[i]","R");
         p = f[i]->GetParameter(1);
         vR.push_back(p);
         h->Fill(p);
     }
+    
+    /*for(i=0;i<V.size();i++)
+        cout << i << " " << vR.at(i) << endl;*/
+    
     
     //Pintamos los datos y el ajuste
     c1 = new TCanvas("c1","canvas");
@@ -107,17 +112,17 @@ void VRotura ()
     
     c2 = new TCanvas("c2","canvas");
     c2->cd(1);
-    gr1[0]->SetMarkerStyle(4);
-    gr1[0]->SetMarkerColor(1);
-    gr1[1]->SetMarkerStyle(26);
-    gr1[1]->SetMarkerColor(8);
-    gr1[2]->SetMarkerStyle(27);
-    gr1[2]->SetMarkerColor(9);
+    gr1[3]->SetMarkerStyle(4);
+    gr1[3]->SetMarkerColor(1);
+    gr1[4]->SetMarkerStyle(26);
+    gr1[4]->SetMarkerColor(8);
+    gr1[5]->SetMarkerStyle(27);
+    gr1[5]->SetMarkerColor(9);
 
     TMultiGraph *mg1 = new TMultiGraph();
-    mg1->Add(gr1[0]);
-    mg1->Add(gr1[1]);
-    mg1->Add(gr1[2]);
+    mg1->Add(gr1[3]);
+    mg1->Add(gr1[4]);
+    mg1->Add(gr1[5]);
     mg1->GetXaxis()->SetTitle("Voltaje [V]");
     mg1->GetYaxis()->SetTitle("1/I*dI/dV");
     mg1->Draw("AP");
