@@ -7,11 +7,14 @@ import os
 from matplotlib.pyplot import  figure, step
 from RsInstrument import *  # The RsInstrument package is hosted on pypi.org, see Readme.txt for more details
 
+#Introducimos el nombre
 print('Input code name: ')
 name=input()
 
+#Path para el output
 path='Desktop/Laboratorio/Programacion-Automatizacion/Pyvisa/Output/'+name+'.txt'
 
+#Inicializamos la conexion con el scope
 rta = None
 try:
 	#Abrir sesion VISA
@@ -28,6 +31,7 @@ if os.path.isfile(path):
 x_final = []
 y_final = []
 
+#Configuramos los parametro de la medicion
 rta.write("ACQuire:POINts 100000") # // Set points adquisition
 rta.write("TIMebase:SCALe 5e-6") # // Set scale to 50 us
 timeB=float(rta.query("TIMebase:SCALe?"))
@@ -36,6 +40,7 @@ rta.write("FORM ASCii") # // Set REAL data format
 rta.write("FORM:BORD LSBF") # // Set little endian byte order
 rta.write("CHAN1:DATA:POIN DMAX") # // Set sample range to memory data in displayed time range
 
+#Comienza la adquisicion
 for i in range(50):
     rta.write("SING") # // Start single acquisition
     if rta.query("*OPC?"):
@@ -52,6 +57,7 @@ for i in range(50):
 
 print(len(x))
 
+#Escritura del fichero de salida
 with open(path, 'w') as f:
     f.write('s;v\n')
     for i in range(len(x_final)):
@@ -60,6 +66,7 @@ with open(path, 'w') as f:
         f.write(str(y_final[i]))
         f.write('\n')
 
+#Plot final
 plt.figure(figsize=(12, 4))
 plt.grid(True)
 plt.plot(x_final,y_final) 

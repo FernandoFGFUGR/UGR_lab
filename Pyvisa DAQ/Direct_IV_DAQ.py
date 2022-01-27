@@ -1,4 +1,4 @@
-#Import librerias, algunas pueden estar sin usar.
+#Import librerias
 import pyvisa
 import time
 import numpy as np
@@ -9,7 +9,7 @@ import os
 print('Input code name: ')
 name=input()
 
-#Introducimos numero de pruebas
+#Introducimos numero de pruebas (SiPM)
 print('Input numero de pruebas: ')
 ntest=int(input())
 
