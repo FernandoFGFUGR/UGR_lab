@@ -1,4 +1,3 @@
-#Definicion de las librerias
 import time
 import matplotlib.pyplot as plt
 import numpy as np
@@ -13,14 +12,14 @@ import queue
 import threading
 from matplotlib.animation import FuncAnimation
 import warnings
+from datetime import date
+import errno
 
-#Funcion de adquisicion
 def acquisition(queue, entries, path, res):
 
     valuep = []
     repeat = 0
 
-    #Revisamos que no existan ya los ficheros
     if os.path.isfile(path + '.txt'):
         os.remove(path + '.txt') 
 
@@ -30,7 +29,6 @@ def acquisition(queue, entries, path, res):
     #Abrir sesion VISA
     rm = pyvisa.ResourceManager()
 
-    #Configuracion del scope
     rta = rm.open_resource('TCPIP::192.168.100.101::INSTR')
     rta.write("MEASurement1:TIMeout:AUTO")
     rta.write("SYSTem:COMMunicate:INTerface:ETHernet:TRANsfer FD100")
@@ -40,20 +38,17 @@ def acquisition(queue, entries, path, res):
 
     while len(valuep) <= entries:
 
-        #Mensajes enviados al scope para que devuelvan la medicion.
         if rta.query("*OPC?"):
             p1=float(rta.query("CURSor1:Y1Position?"))
         if rta.query("*OPC?"):
             p2=float(rta.query("CURSor1:Y2Position?"))
 
-        #Comprobamos si tenemos puesto 50 Ohm de impedancia
         if res == "y":
             r=(p1-p2)*2
         else:
             r=(p1-p2)
         
-        #Pequeno IF para que no se escriban valores repetidos
-        if r != repeat:
+        if r != repeat and r > -0.25e-8 and r < 1e-8:
             repeat = r
             valuep.append(r)
             a = np.array(valuep)
@@ -61,7 +56,6 @@ def acquisition(queue, entries, path, res):
         #else:
             #a = np.array(valuep)
 
-        #Print del porcentaje de completado
         print(str(round(len(valuep)/entries*100, 3))+"%")
 
         #queue.put(a)
@@ -91,7 +85,6 @@ def acquisition(queue, entries, path, res):
                 #new_data = list(set(txt_file))
                 
             #queue.put(a)
-            #Cerrar y salir
             try:
                 plt.savefig(path + '.png')
                 rta.close() 
@@ -100,24 +93,20 @@ def acquisition(queue, entries, path, res):
                 rta.close() 
                 os._exit(1)
 
-#Funcion para el histograma el tiempo real
+
 def histogram(queue):
 
-    #Ignorar todos los warnings
     warnings.filterwarnings("ignore")
 
-    #Funcion para la animacion
     def animate(i):
 
-        #gain=0
-        #Mensaje recibido de la adquisicion en paralelo
+        gain=0
         message = queue.get()
         
-        #Plotting del histograma
         plt.cla()
         plt.ylabel("Entries")
         #plt.yscale('log')
-        hist, bin_edges = np.histogram(message, 300)
+        hist, bin_edges = np.histogram(message, 250)
         bin_edges = bin_edges[1:]
         #peaks, _ = find_peaks(hist, distance=10, prominence=3)
     
@@ -139,7 +128,6 @@ def histogram(queue):
 
 if __name__ == "__main__":
 
-    #Main del script, introducimos datos, seteamos el path y inicializamos los hilos en paralelo.
     print('Introduce nombre: ')
     name=input() 
     print('Introduce entradas: ')
@@ -147,7 +135,18 @@ if __name__ == "__main__":
     print('Impedancia de 50 Ohm? (y/n): ')
     res=input()
 
-    path='Desktop/Laboratorio/Programacion-Automatizacion/Pyvisa/Output/'+name
+    path='Desktop/Laboratorio/Programacion-Automatizacion/Pyvisa/Output/Charge_hist/'+str(date.today())+"/"
+
+    try:
+        os.mkdir(path)
+    except OSError as e:
+        if e.errno != errno.EEXIST:
+            raise
+
+    #if not os.path.exists(str(date.today())):
+        #os.makedirs(str(date.today()))
+
+    path='Desktop/Laboratorio/Programacion-Automatizacion/Pyvisa/Output/Charge_hist/'+str(date.today())+"/" + name
 
     q = queue.Queue()
     acquire = threading.Thread(target=acquisition, args=(q, entries, path, res, )) 
