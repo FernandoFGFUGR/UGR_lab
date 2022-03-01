@@ -6,14 +6,15 @@ import matplotlib.pyplot as plt
 import os
 from datetime import date
 import errno
+from tqdm import tqdm
 
 #Introducimos el code name
 print('Input code name: ')
 name=input()
 
 #Introducimos numero de pruebas
-print('Input numero de pruebas: ')
-ntest=int(input())
+#print('Input numero de pruebas: ')
+ntest=6
 
 #Path directorio
 path='Desktop/Laboratorio/Programacion-Automatizacion/Pyvisa/Output/IV_direct/'+str(date.today())+"/"
@@ -58,17 +59,21 @@ ttiSupply.write('DELTAV1 0.01')
 if os.path.isfile(path + '_direct.txt'):
    os.remove(path + '_direct.txt') 
 
+pbar = tqdm(total = ntest)
+
 for i in range(ntest):
 
     ttiSupply.write('OP1 0')
     #Pausa para iniciar
+    print('\n')
     print('Pulse intro para comenzar prueba ' + str(i+1) + ' : ')
 
     input()
     ttiSupply.write('OP1 1')
 
     #Comandos para inicializar power supply QL355P, no hemos conseguido leer datos
-    ttiSupply.write('V1 0')
+    vstart=0
+    ttiSupply.write('V1 '+str(vstart))
 
 
     #Tiempo para que la fuente de alimentacion alcance el voltaje pedido.
@@ -82,7 +87,7 @@ for i in range(ntest):
     read=keithleyE.query_ascii_values('READ?', container=np.array) 
     ampList[0] = round(read[0]*1000, 7)
 
-    while read[0]*1000 < 9.7:
+    while voltList[-1] <vstart+3 and read[0]*1000 < 9.7:
         voltList.append(0 + inc)
         ttiSupply.write('INCV1')
         read=keithleyE.query_ascii_values('READ?', container=np.array)
@@ -113,6 +118,7 @@ for i in range(ntest):
             f.write(' ')
             f.write(str(voltList[j]))
             f.write('\n')
+    pbar.update(1)
 
 ttiSupply.write('OP1 0')
 

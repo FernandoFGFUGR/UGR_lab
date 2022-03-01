@@ -8,9 +8,12 @@ from matplotlib.pyplot import  figure, step
 from RsInstrument import *  # The RsInstrument package is hosted on pypi.org, see Readme.txt for more details
 from datetime import date
 import errno
+from tqdm import tqdm
 
-print('Input code name: ')
+print('Input file name: ')
 name=input()
+print('Input channel: ')
+channel=input()
 
 path='Desktop/Laboratorio/Programacion-Automatizacion/Pyvisa/Output/Waveform/'+str(date.today())+"/"
 
@@ -41,32 +44,39 @@ if os.path.isfile(path):
 x_final = []
 y_final = []
 
-rta.write("ACQuire:POINts 100000") # // Set points adquisition
-rta.write("TIMebase:SCALe 5e-6") # // Set scale to 50 us
+num_windows=10
+
+rta.write("ACQuire:POINts 500000") # // Set points adquisition
+rta.write("TIMebase:SCALe 100e-3") # // Set scale to 50 us
 timeB=float(rta.query("TIMebase:SCALe?"))
-print(timeB)
+trigger=float(rta.query("TRIGger:A:LEVel"+channel+"?"))
+#print(timeB)
 rta.write("FORM ASCii") # // Set REAL data format
 rta.write("FORM:BORD LSBF") # // Set little endian byte order
-rta.write("CHAN1:DATA:POIN DMAX") # // Set sample range to memory data in displayed time range
+rta.write("CHAN"+channel+":DATA:POIN DMAX") # // Set sample range to memory data in displayed time range
 
-for i in range(50):
+pbar = tqdm(total = num_windows, leave=False)
+
+for i in range(num_windows):
     rta.write("SING") # // Start single acquisition
     if rta.query("*OPC?"):
-        x_aux=rta.query("CHAN1:DATA:HEAD?") # // Read header
+        x_aux=rta.query("CHAN"+channel+":DATA:HEAD?") # // Read header
     aux=[float(i) for i in x_aux.split(',')]
     x = np.linspace(aux[0],aux[1],int(aux[2]))
     x = x + (i*timeB*12)
 
-    y_aux=rta.query("CHAN1:DATA?") # // Read channel data
+    y_aux=rta.query("CHAN"+channel+":DATA?") # // Read channel data
     y=[float(i) for i in y_aux.split(',')]
     for i in range(len(x)):
         x_final.append(x[i])
         y_final.append(y[i])
+    pbar.update(1)
+pbar.close()
 
 print(len(x))
 
 with open(path, 'w') as f:
-    #f.write('s;v\n')
+    f.write(str(timeB*12*num_windows)+" "+str(trigger)+'\n')
     for i in range(len(x_final)):
         f.write(str(x_final[i]))
         f.write(' ')

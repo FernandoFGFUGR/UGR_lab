@@ -14,8 +14,9 @@ from matplotlib.animation import FuncAnimation
 import warnings
 from datetime import date
 import errno
+from tqdm import tqdm
 
-def acquisition(queue, entries, path, res):
+def acquisition(queue, entries, path, ):
 
     valuep = []
     repeat = 0
@@ -36,6 +37,8 @@ def acquisition(queue, entries, path, res):
 
     start_time = time.time()
 
+    #pbar = tqdm(total = entries, leave=False)
+
     while len(valuep) <= entries:
 
         if rta.query("*OPC?"):
@@ -43,12 +46,9 @@ def acquisition(queue, entries, path, res):
         if rta.query("*OPC?"):
             p2=float(rta.query("CURSor1:Y2Position?"))
 
-        if res == "y":
-            r=(p1-p2)*2
-        else:
-            r=(p1-p2)
+        r=(p1-p2)
         
-        if r != repeat and r > -0.25e-8 and r < 1e-8:
+        if r != repeat: #and r > -0.25e-8 and r < 1e-8:
             repeat = r
             valuep.append(r)
             a = np.array(valuep)
@@ -56,6 +56,7 @@ def acquisition(queue, entries, path, res):
         #else:
             #a = np.array(valuep)
 
+        #os.system('cls||clear')
         print(str(round(len(valuep)/entries*100, 3))+"%")
 
         #queue.put(a)
@@ -86,12 +87,16 @@ def acquisition(queue, entries, path, res):
                 
             #queue.put(a)
             try:
+                #pbar.close()
                 plt.savefig(path + '.png')
                 rta.close() 
                 os._exit(1)
             except:
+                #pbar.close()
                 rta.close() 
                 os._exit(1)
+
+        #pbar.update(1)
 
 
 def histogram(queue):
@@ -132,8 +137,6 @@ if __name__ == "__main__":
     name=input() 
     print('Introduce entradas: ')
     entries=int(input())
-    print('Impedancia de 50 Ohm? (y/n): ')
-    res=input()
 
     path='Desktop/Laboratorio/Programacion-Automatizacion/Pyvisa/Output/Charge_hist/'+str(date.today())+"/"
 
@@ -149,7 +152,7 @@ if __name__ == "__main__":
     path='Desktop/Laboratorio/Programacion-Automatizacion/Pyvisa/Output/Charge_hist/'+str(date.today())+"/" + name
 
     q = queue.Queue()
-    acquire = threading.Thread(target=acquisition, args=(q, entries, path, res, )) 
+    acquire = threading.Thread(target=acquisition, args=(q, entries, path, )) 
     acquire.setDaemon(True)
     hist = threading.Thread(target=histogram, args=(q, )) 
     hist.setDaemon(True)

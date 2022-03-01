@@ -39,7 +39,7 @@ rm.list_resources()
 #Agregamos cada dispositivo al puerto donde esten conectados, Port1=ASRL5::INSTR, Port2=ASRL6::INSTR, Port3=ASRL7::INSTR, Port4=ASRL8::INSTR,
 keithleyE = rm.open_resource('ASRL5::INSTR')
 ttiSupply = rm.open_resource('ASRL7::INSTR')
-#board = pyfirmata.Arduino('COM11')
+board = pyfirmata.Arduino('COM9')
 
 #Ajustes de comunicacion
 keithleyE.read_termination = '\n'
@@ -71,17 +71,23 @@ print('\n')
 
 for i in range(ntest):
 
-    ttiSupply.write('OP1 0')
-    #Pausa para iniciar
-    print('\n')
-    print('Pulse intro para comenzar prueba ' + str(i+1) + ' : ')
+    #Seleccionamos canal
+    temp = '{0:04b}'.format(i)
+    board.digital[2].write(int(temp[0]))
+    board.digital[3].write(int(temp[1]))
+    board.digital[4].write(int(temp[2]))
+    board.digital[5].write(int(temp[3]))
 
-    input()
-    ttiSupply.write('OP1 1')
+    print("Comenzando prueba SiPM: "+str(i+1))
 
-    #Comandos para inicializar power supply QL355P, no hemos conseguido leer datos
-    vstart=25
+    #Comandos de la power supply QL355P, no hemos conseguido leer datos
+    vstart=0
     ttiSupply.write('V1 '+str(vstart))
+
+    #Tiempo para que la fuente de alimentacion alcance el voltaje pedido.
+
+    ttiSupply.write('OP1 1')
+    board.digital[6].write(0)
 
     time.sleep(1)
 
@@ -95,7 +101,7 @@ for i in range(ntest):
 
     #pbar = tqdm(total = 41)
 
-    while voltList[-1] <vstart+10 and read[0]*1000 > -9:
+    while voltList[-1] <vstart+20 and read[0]*1000 > -9:
 
         voltList.append(vstart+inc)
         ttiSupply.write('INCV1')
@@ -121,7 +127,7 @@ for i in range(ntest):
     pbar.update(1)
 
 ttiSupply.write('OP1 0')
-#board.digital[7].write(1)
+board.digital[7].write(1)
 
 #Calculamos derivada de intensidad, dividimos I'/I y buscamos el maximo.
 #dydx = np.diff(ampList) / np.diff(voltList)
