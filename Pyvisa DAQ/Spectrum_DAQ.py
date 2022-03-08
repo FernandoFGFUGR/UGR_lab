@@ -30,7 +30,7 @@ def acquisition(queue, entries, path, ):
     #Abrir sesion VISA
     rm = pyvisa.ResourceManager()
 
-    rta = rm.open_resource('TCPIP::192.168.100.101::INSTR')
+    rta = rm.open_resource('TCPIP::192.168.100.100::INSTR')
     rta.write("MEASurement1:TIMeout:AUTO")
     rta.write("SYSTem:COMMunicate:INTerface:ETHernet:TRANsfer FD100")
     rta.write("FORM BIN")
@@ -110,7 +110,7 @@ def histogram(queue):
         
         plt.cla()
         plt.ylabel("Entries")
-        #plt.yscale('log')
+        plt.yscale('log')
         hist, bin_edges = np.histogram(message, 250)
         bin_edges = bin_edges[1:]
         #peaks, _ = find_peaks(hist, distance=10, prominence=3)

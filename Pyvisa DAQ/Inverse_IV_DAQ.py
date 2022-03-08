@@ -80,7 +80,7 @@ for i in range(ntest):
     ttiSupply.write('OP1 1')
 
     #Comandos para inicializar power supply QL355P, no hemos conseguido leer datos
-    vstart=25
+    vstart=30
     ttiSupply.write('V1 '+str(vstart))
 
     time.sleep(1)
@@ -95,7 +95,7 @@ for i in range(ntest):
 
     #pbar = tqdm(total = 41)
 
-    while voltList[-1] <vstart+10 and read[0]*1000 > -9:
+    while voltList[-1] <vstart+13 and read[0]*1000 > -9:
 
         voltList.append(vstart+inc)
         ttiSupply.write('INCV1')
@@ -118,9 +118,11 @@ for i in range(ntest):
             f.write(' ')
             f.write(str(voltList[j]))
             f.write('\n')
+        
     pbar.update(1)
-
 ttiSupply.write('OP1 0')
+with open(path + '_inverse.txt', 'a+') as f:
+    f.write('0 0 0')
 #board.digital[7].write(1)
 
 #Calculamos derivada de intensidad, dividimos I'/I y buscamos el maximo.

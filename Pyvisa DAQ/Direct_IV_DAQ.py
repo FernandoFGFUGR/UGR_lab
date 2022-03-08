@@ -87,7 +87,7 @@ for i in range(ntest):
     read=keithleyE.query_ascii_values('READ?', container=np.array) 
     ampList[0] = round(read[0]*1000, 7)
 
-    while voltList[-1] <vstart+3 and read[0]*1000 < 9.7:
+    while voltList[-1] <vstart+3 and read[0]*1000 < 9:
         voltList.append(0 + inc)
         ttiSupply.write('INCV1')
         read=keithleyE.query_ascii_values('READ?', container=np.array)
@@ -119,8 +119,9 @@ for i in range(ntest):
             f.write(str(voltList[j]))
             f.write('\n')
     pbar.update(1)
-
 ttiSupply.write('OP1 0')
+with open(path + '_direct.txt', 'a+') as f:
+    f.write('0 0 0')
 
 #Hacemos plot de los resultados
 #plt.plot(voltList, ampList)
