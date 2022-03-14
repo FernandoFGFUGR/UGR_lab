@@ -78,7 +78,7 @@ line1 = []
 x_vec = np.linspace(0,1,size+1)[0:-1]
 y_vec = np.zeros(len(x_vec))
 
-#Lectura continua de datos
+
 while True:
     read=keithleyE.query_ascii_values('READ?', container=np.array)
     Rt=(round(read[0], 7))
