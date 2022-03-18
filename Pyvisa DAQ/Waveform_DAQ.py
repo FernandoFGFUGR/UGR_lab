@@ -46,7 +46,7 @@ pathF='Desktop/Laboratorio/Programacion-Automatizacion/Pyvisa/Output/Waveform/'+
 rta = None
 try:
 	rm = pyvisa.ResourceManager()
-	rta = rm.open_resource('TCPIP::192.168.100.100::INSTR')
+	rta = rm.open_resource('TCPIP::192.168.100.101::INSTR')
 except Exception as ex:
 	print('Error initializing the instrument session:\n' + ex.args[0])
 	exit()

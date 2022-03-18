@@ -90,7 +90,7 @@ def histogram(queue):
         bin_edges = bin_edges[1:] 
         plt.plot(bin_edges, hist) 
 
-    ani = FuncAnimation(plt.gcf(), animate, interval=100)
+    ani = FuncAnimation(plt.gcf(), animate, interval=1)
     plt.show()
     plt.tight_layout()
 

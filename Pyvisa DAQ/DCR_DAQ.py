@@ -13,7 +13,7 @@ import shutil
 
 #No tocar/Configuracion
 rm = pyvisa.ResourceManager()
-rta = rm.open_resource('TCPIP::192.168.100.100::INSTR')
+rta = rm.open_resource('TCPIP::192.168.100.101::INSTR')
 rta.write("TIMebase:SCALe 20e-6")
 
 #Variables
@@ -70,12 +70,11 @@ def animate(i):
         a = np.array(valuep)
     aux = p1
     
-
     plt.cla()
     plt.xlabel("mHz/mm2")
     plt.ylabel("Bins")
     #plt.yscale('log')
-    plt.hist(a, bins=20, color='c', edgecolor='k', alpha=0.65)
+    plt.hist(a, bins=20, color='c', edgecolor='k', alpha=0.5)
     plt.axvline(a.mean(), color='k', linestyle='dashed', linewidth=1)
     plt.tight_layout()
 
@@ -86,11 +85,13 @@ def animate(i):
 
     #Creacion fichero txt
     if len(valuep) == int(num):
+        trigger=float(rta.query("TRIGger:A:LEVel4?"))
         for i in range(len(valuep)):
             TIME+=1/valuep[i]
         with open(pathF+ ".txt" , 'w') as f:
             f.write('Time:' + str(TIME) +"\n")
             f.write('TAM:' + str(len(valuep)) +"\n")
+            f.write('Trigger:' + str(trigger) +"\n")
             f.write('DCR(mHz/mm2):' + str(len(valuep)/TIME) +"\n")
             f.write('Tiempo de ejecucion: ' +str(round(((time.time() - start_time)/60),2))+ ' min' +'\n') 
         
@@ -103,7 +104,7 @@ def animate(i):
             rta.close() 
             os._exit(1)
 
-ani = FuncAnimation(plt.gcf(), animate, interval=100)
+ani = FuncAnimation(plt.gcf(), animate, interval=1)
 
 plt.tight_layout()
 plt.show()
