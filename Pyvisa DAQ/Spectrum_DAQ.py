@@ -14,6 +14,7 @@ from matplotlib.animation import FuncAnimation
 import warnings
 from datetime import date
 import errno
+import winsound
 
 #Funcion de adquisicion
 def acquisition(queue, entries, path, ):
@@ -29,8 +30,12 @@ def acquisition(queue, entries, path, ):
 
     #No tocar/Configuracion
     rm = pyvisa.ResourceManager()
-    #Revisar IP en el osciloscopio, puede cambiar
-    rta = rm.open_resource('TCPIP::192.168.100.100::INSTR')
+    #arbGen = rm.open_resource('TCPIP::192.168.100.103::INSTR')
+    rta = rm.open_resource('TCPIP::192.168.100.101::INSTR')
+    #arbGen.write("C1:BSWV WVTP,PULSE")
+    #arbGen.write("C1:BSWV WIDTH,100e-9")
+    #arbGen.write("C1:BSWV FREC,1e3")
+    #arbGen.write("C1:OUTP ON")
     rta.write("MEASurement1:TIMeout:AUTO")
     rta.write("SYSTem:COMMunicate:INTerface:ETHernet:TRANsfer FD100")
     rta.write("FORM BIN")
@@ -54,24 +59,45 @@ def acquisition(queue, entries, path, ):
 
         #Print de control
         print(str(round(len(valuep)/entries*100, 3))+"%")
+        try:
+            #Creacion de txt
+            if len(valuep) == entries:
+                auxLen = np.arange(0 , len(valuep) , 1)
+                with open(path + '.txt', 'w') as f:
+                    f.write(str(min(valuep)) + ' ' + str(max(valuep)) + '\n')
+                    for i in auxLen:
+                        f.write(str(valuep[i]))
+                        f.write('\n')
 
-        #Creacion de txt
-        if len(valuep) == entries:
+            #Cierre seguro + print de la imagen si se ha mantenido
+                try:
+                    plt.savefig(path + '.png')
+                    #arbGen.write("C1:OUTP OFF")
+                    #arbGen.close() 
+                    rta.close() 
+                    for i in range(3):
+                        winsound.Beep(650-i*100, 500-i*50)
+                    os._exit(1)
+                    
+                except:
+                    #arbGen.write("C1:OUTP OFF")
+                    #arbGen.close() 
+                    rta.close() 
+                    for i in range(3):
+                        winsound.Beep(650-i*100, 500-i*50)
+                    os._exit(1)
+        except KeyboardInterrupt:
             auxLen = np.arange(0 , len(valuep) , 1)
             with open(path + '.txt', 'w') as f:
                 f.write(str(min(valuep)) + ' ' + str(max(valuep)) + '\n')
                 for i in auxLen:
                     f.write(str(valuep[i]))
                     f.write('\n')
-
-        #Cierre seguro + print de la imagen si se ha mantenido
-            try:
-                plt.savefig(path + '.png')
-                rta.close() 
-                os._exit(1)
-            except:
-                rta.close() 
-                os._exit(1)
+            rta.close() 
+            for i in range(3):
+                winsound.Beep(650-i*100, 500-i*50)
+            os._exit(1)
+                
 
 #Funcion de visualizacion
 def histogram(queue):

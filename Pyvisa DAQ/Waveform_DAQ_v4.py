@@ -15,10 +15,9 @@ print('Input file name: ')
 name=input()
 print('Input channel: ')
 channel=input()
-print('Input size window: ')
-timeScale=float(input())/12
-print('Input total time: ')
-totalW=float(input())/(12*timeScale)
+print('Input triggers: ')
+trigg=input()
+timeScale=195e-6
 
 start_time = time.time()
 
@@ -58,45 +57,44 @@ if os.path.isfile(pathF):
 
 #Elimina timeout 
 del rta.timeout
-num_files=0
 
 #No tocar/Configuracion parametros osciloscopio/Solo tocar los 2M de resolucion
-num_windows=int(totalW)
-rta.write("TIMebase:SCALe " + str(timeScale)) 
-acqPointsAux=float(rta.query("ACQuire:POINts?"))
 timeB=float(rta.query("TIMebase:SCALe?"))
-acqPoints = 2000000*timeB*12 #Parametro a modificar
-rta.write("ACQuire:POINts " + str(acqPoints)) 
-trigger=float(rta.query("TRIGger:A:LEVel"+channel+"?"))
+#acqPoints = 2000000*timeB*12 #Parametro a modificar
+#print(acqPoints)
+#rta.write("ACQuire:POINts " + str(acqPoints))
+#rta.write("TIMebase:SCALe " + str(timeScale)) 
 rta.write("FORM ASCii")
 rta.write("FORM:BORD LSBF")
-rta.write("CHAN"+channel+":DATA:POIN DMAX")
-#rta.write("TRIGger:A:LEVel1 -20e-3")
-rta.write("RUNC") #Se puede cambiar por SING/RUNC para mas precision-lento
-aRate=float(rta.query("ACQuire:POINts:ARATe?"))
-sRate=float(rta.query("ACQuire:SRATe?"))
+#rta.write("CHAN"+channel+":DATA:POIN DMAX")
+#float(rta.write("CHANnel1:HISTory:TMODe RELative"))
+#rta.write("ACQuire:SEGMented:STATe OFF")
+#rta.write("ACQuire:NSINgle:COUNt "+trigg)
+#rta.write("ACQuire:POINts " + str(acqPoints))
 
-try:
+#rta.write("RUNSingle")
 
-    #Bucle de la adquisicion
-    for i in range(num_windows):
+#while not rta.query("*OPC?"):
+    #time.sleep(5)
 
-        if rta.query("*OPC?"):
-            y_aux=rta.query("CHAN"+channel+":DATA?")
-        y=[float(i) for i in y_aux.split(',')]
+for i in range(int(trigg)):
+    rta.write("CHAN:HIST:CURR " + str(-int(trigg)+(i+1)))
+    #print("CHAN:HIST:CURR" + str(-1*i))
+    y_aux=rta.query("CHAN"+channel+":DATA?")
 
-        #Print de control
-        print(str(round(((i+1)/num_windows*100),2))+"%")
-        
-        #Escritura fichero txt
-        with open(pathF+"_"+str(i)+ ".txt", 'w') as f:
-            for i in range(len(y)):
-                f.write(str(round(y[i],5)))
+    while not rta.query("*OPC?"):
+        time.sleep(0.1)
+
+    y=[float(i) for i in y_aux.split(',')]
+    tsr=rta.query("CHAN:HIST:TSR?")
+    print(str(round(i/int(trigg)*100))+" %")
+
+    with open(pathF+"_"+str(i)+ ".txt", 'w') as f:
+                f.write(str(tsr))
                 f.write('\n')
-        num_files+=1
-
-except KeyboardInterrupt:
-    pass
+                for i in range(len(y)):
+                    f.write(str(round(y[i],5)))
+                    f.write('\n')
 
 print("FIN")        
     
@@ -115,19 +113,19 @@ pathFD= Folderpath + "/DATA.txt"
 if os.path.isfile(pathFD):
    os.remove(pathFD)
 
-#Creacion de fichero DATA.txt
+trigger=float(rta.query("TRIGger:A:LEVel"+channel+"?"))
+aRate=float(rta.query("ACQuire:POINts:ARATe?"))
+sRate=float(rta.query("ACQuire:SRATe?"))
+
 with open(pathFD, 'w') as f:
-    f.write('Resolucion(ideal): ' + str(acqPoints/(timeScale*12)) + ' Sa/s'+ '\n')  
-    f.write('Num de puntos(ideal): ' + str(2000000*timeB*12) + '\n')
+    #f.write('Resolucion(ideal): ' + str(acqPoints/(timeScale*12)) + ' Sa/s'+ '\n')  
+    #f.write('Num de puntos(ideal): ' + str(2000000*timeScale*12) + '\n')
     f.write('Resolucion(real): ' + str(sRate) + " ! "+ str(aRate) + ' Sa/s'+ '\n')
     f.write('Num de puntos(real): ' + str(len(y)) + '\n')
-    f.write('Tamano ventana: ' + str(round((timeB*12),5)) + ' s' + '\n')   
-    f.write('Numero de ventanas(ideal): ' + str(num_windows)+'\n') 
-    f.write('Numero de ventanas(real): ' + str(num_files)+'\n') 
-    f.write('Tiempo total: ' + str(num_windows*timeB*12)+ ' s' +'\n') 
-    f.write('Trigger (0.5PE): ' +str(trigger)+ ' v' +'\n') 
-    f.write('Tiempo de ejecucion: ' +str(round(((time.time() - start_time)/60),2))+ ' min' +'\n') 
-    f.write('Tamano del fichero: ' + str(round((size / (1024 * 1024)),2)) + ' MB' +'\n')
+    f.write('Time base scale: ' + str(timeB) + ' s'+ '\n')  
+    #f.write('Time base scale: ' + '41e-6 s'+ '\n')  
+    f.write('Trigger (0.5PE): ' +str(trigger)+ ' v' +'\n')
+    f.write('Tiempo de ejecucion: ' +str(round(((time.time() - start_time)/60),2))+ ' min' +'\n')  
 
 
 #Codigo para la creacion del ZIP

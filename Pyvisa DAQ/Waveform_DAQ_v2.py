@@ -75,25 +75,33 @@ rta.write("CHAN"+channel+":DATA:POIN DMAX")
 rta.write("RUNC") #Se puede cambiar por SING/RUNC para mas precision-lento
 aRate=float(rta.query("ACQuire:POINts:ARATe?"))
 sRate=float(rta.query("ACQuire:SRATe?"))
-
+auxperiod = 0
 try:
-
     #Bucle de la adquisicion
-    for i in range(num_windows):
-
-        if rta.query("*OPC?"):
-            y_aux=rta.query("CHAN"+channel+":DATA?")
+    while num_windows > num_files:
+        #print("HOLA")
+        #rta.write("SING")
+        y_aux=rta.query("CHAN"+channel+":DATA?")
+        #print("HOLA1")
+        period=float(rta.query("TCOunter:RESult:ACTual:PERiod?"))
+        #print("ADIOS")
+            
         y=[float(i) for i in y_aux.split(',')]
 
-        #Print de control
-        print(str(round(((i+1)/num_windows*100),2))+"%")
-        
-        #Escritura fichero txt
-        with open(pathF+"_"+str(i)+ ".txt", 'w') as f:
-            for i in range(len(y)):
-                f.write(str(round(y[i],5)))
+        if auxperiod != period and period < 1e20:
+            #Print de control
+            print(str(round(((num_files+1)/num_windows*100),2))+"%")
+            
+            #Escritura fichero txt
+            with open(pathF+"_"+str(num_files)+ ".txt", 'w') as f:
+                f.write(str(period))
                 f.write('\n')
-        num_files+=1
+                for i in range(len(y)):
+                    f.write(str(round(y[i],5)))
+                    f.write('\n')
+            num_files+=1
+            auxperiod = period
+        
 
 except KeyboardInterrupt:
     pass
