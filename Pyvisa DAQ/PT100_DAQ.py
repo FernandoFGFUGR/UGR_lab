@@ -2,8 +2,6 @@
 import pyvisa
 import numpy as np
 import matplotlib.pyplot as plt
-import math as mt
-import time
 
 def PT100(R):
     v = 31.64259588293078

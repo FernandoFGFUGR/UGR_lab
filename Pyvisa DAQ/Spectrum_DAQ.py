@@ -1,4 +1,3 @@
-import time
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.ticker import PercentFormatter
@@ -12,9 +11,7 @@ import queue
 import threading
 from matplotlib.animation import FuncAnimation
 import warnings
-from datetime import date
-import errno
-import winsound
+import lab_module as lm
 
 #Funcion de adquisicion
 def acquisition(queue, entries, path, ):
@@ -23,21 +20,16 @@ def acquisition(queue, entries, path, ):
     repeat = 0
 
     #Supervisa que no existe, si no elimina el anterior
-    if os.path.isfile(path + '.txt'):
-        os.remove(path + '.txt') 
-    if os.path.isfile(path + '.png'):
-        os.remove(path + '.png')
+    lm.delete_dir(path+'.txt')
+    lm.delete_dir(path+'.png')
 
-    #No tocar/Configuracion
     rm = pyvisa.ResourceManager()
-    #arbGen = rm.open_resource('TCPIP::192.168.100.103::INSTR')
-    rta = rm.open_resource('TCPIP::192.168.100.101::INSTR')
+    #arbGen = rm.open_resource(lm.return_instr("arbGen"))
+    rta = rm.open_resource(lm.return_instr("scope"))
     #arbGen.write("C1:BSWV WVTP,PULSE")
     #arbGen.write("C1:BSWV WIDTH,100e-9")
     #arbGen.write("C1:BSWV FREC,1e3")
     #arbGen.write("C1:OUTP ON")
-    rta.write("MEASurement1:TIMeout:AUTO")
-    rta.write("SYSTem:COMMunicate:INTerface:ETHernet:TRANsfer FD100")
     rta.write("FORM BIN")
 
     #Bucle de las entradas seleccionadas
@@ -58,7 +50,8 @@ def acquisition(queue, entries, path, ):
             queue.put(a)
 
         #Print de control
-        print(str(round(len(valuep)/entries*100, 3))+"%")
+        lm.counter_finish(len(valuep), entries)
+
         try:
             #Creacion de txt
             if len(valuep) == entries:
@@ -72,19 +65,13 @@ def acquisition(queue, entries, path, ):
             #Cierre seguro + print de la imagen si se ha mantenido
                 try:
                     plt.savefig(path + '.png')
-                    #arbGen.write("C1:OUTP OFF")
-                    #arbGen.close() 
                     rta.close() 
-                    for i in range(3):
-                        winsound.Beep(650-i*100, 500-i*50)
+                    lm.beep()
                     os._exit(1)
                     
                 except:
-                    #arbGen.write("C1:OUTP OFF")
-                    #arbGen.close() 
                     rta.close() 
-                    for i in range(3):
-                        winsound.Beep(650-i*100, 500-i*50)
+                    lm.beep()
                     os._exit(1)
         except KeyboardInterrupt:
             auxLen = np.arange(0 , len(valuep) , 1)
@@ -94,8 +81,7 @@ def acquisition(queue, entries, path, ):
                     f.write(str(valuep[i]))
                     f.write('\n')
             rta.close() 
-            for i in range(3):
-                winsound.Beep(650-i*100, 500-i*50)
+            lm.beep()
             os._exit(1)
                 
 
@@ -129,17 +115,13 @@ if __name__ == "__main__":
     entries=int(input())
 
     #Creacion de directorios por fechas y nombres
-    path='Desktop/Laboratorio/Programacion-Automatizacion/Pyvisa/Output/Charge_hist/'+str(date.today())+"/"
-    try:
-        os.mkdir(path)
-    except OSError as e:
-        if e.errno != errno.EEXIST:
-            raise
-    path='Desktop/Laboratorio/Programacion-Automatizacion/Pyvisa/Output/Charge_hist/'+str(date.today())+"/" + name
+    path=lm.path("Charge_hist")
+    lm.create_dir(path)
+    pathF=path + name
 
     #Inicializamos colar y arrancamos los hilos
     q = queue.Queue()
-    acquire = threading.Thread(target=acquisition, args=(q, entries, path, )) 
+    acquire = threading.Thread(target=acquisition, args=(q, entries, pathF, )) 
     acquire.setDaemon(True)
     hist = threading.Thread(target=histogram, args=(q, )) 
     hist.setDaemon(True)
