@@ -12,6 +12,7 @@ import threading
 from matplotlib.animation import FuncAnimation
 import warnings
 import lab_module as lm
+import dictionary_SCPI as ds
 
 #Funcion de adquisicion
 def acquisition(queue, entries, path, ):
@@ -23,9 +24,9 @@ def acquisition(queue, entries, path, ):
     lm.delete_dir(path+'.txt')
     lm.delete_dir(path+'.png')
 
-    rm = pyvisa.ResourceManager()
+    rta=lm.init_pyvisa(lm.return_instr("scope"))
     #arbGen = rm.open_resource(lm.return_instr("arbGen"))
-    rta = rm.open_resource(lm.return_instr("scope"))
+
     #arbGen.write("C1:BSWV WVTP,PULSE")
     #arbGen.write("C1:BSWV WIDTH,100e-9")
     #arbGen.write("C1:BSWV FREC,1e3")
@@ -35,10 +36,10 @@ def acquisition(queue, entries, path, ):
     #Bucle de las entradas seleccionadas
     while len(valuep) <= entries:
 
-        if rta.query("*OPC?"):
-            p1=float(rta.query("CURSor1:Y1Position?"))
-        if rta.query("*OPC?"):
-            p2=float(rta.query("CURSor1:Y2Position?"))
+        if rta.query(ds.rdy):
+            p1=float(rta.query(ds.posC1))
+        if rta.query(ds.rdy):
+            p2=float(rta.query(ds.posC2))
 
         r=(p1-p2)
         

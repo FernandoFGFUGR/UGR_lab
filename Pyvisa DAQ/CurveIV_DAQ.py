@@ -1,10 +1,7 @@
 #Librerias
-import pyvisa
 import numpy as np
-import os
-from datetime import date
-import errno
-import time
+import lab_module as lm
+import dictionary_SCPI as ds
 
 print('Input code name: ')
 name=input()
@@ -29,38 +26,31 @@ else:
         vStop =aux
 
 #Creacion de directorios por fechas y nombres
-path='Desktop/Laboratorio/Programacion-Automatizacion/Pyvisa/Output/Curve_IV/'+str(date.today())+"/"
-try:
-    os.mkdir(path)
-except OSError as e:
-    if e.errno != errno.EEXIST:
-        raise
-path='Desktop/Laboratorio/Programacion-Automatizacion/Pyvisa/Output/Curve_IV/'+str(date.today())+"/" + name + named
+path=lm.path("Curve_IV")
+lm.create_dir(path)
+path=path + name + named
 
 #No tocar/Configuracion
-rm = pyvisa.ResourceManager('@py')
-smu=rm.open_resource('TCPIP::192.168.100.102::INSTR')
+smu=lm.init_pyvisa(lm.return_instr("smu"))
 
-#Supervisa que no existe, si no elimina el anterior
-if os.path.isfile(path + '.txt'):
-   os.remove(path + '.txt') 
+lm.delete_dir(path + '.txt')
 
 #Reset
-smu.write("*RST")
+smu.write(ds.rst)
 #Configuration staircase sweep measure
-smu.write(":SOUR:VOLT:MODE VOLT")
-smu.write(":SOUR:VOLT:MODE SWE")
-smu.write(":SOUR:SWE:STA SING")
-smu.write(":SOUR:SWE:SPAC LIN")
+smu.write(ds.voltMode)
+smu.write(ds.sweepMode)
+smu.write(ds.sweepSing)
+smu.write(ds.sweepLin)
 smu.write(":SOUR:VOLT:STAR "+str(vStart))
 smu.write(":SOUR:VOLT:STOP "+str(vStop))
 points=int(abs(int(vStart)-int(vStop))/sStep)
 smu.write(":SOUR:VOLT:POIN "+str(points))
 
 #Set auto-range current measurement
-smu.write(":sens:func ""curr""")
-smu.write(":sens:curr:nplc 0.1")
-smu.write(":sens:curr:prot 0.01")
+smu.write(ds.smuAuto1)
+smu.write(ds.smuAuto2)
+smu.write(ds.smuAuto3)
 
 count=0
 
@@ -70,25 +60,25 @@ for j in range(1):
     input()
 
     #Generate triggers by automatic internal algorithm
-    smu.write(":trig:sour aint")
+    smu.write(ds.smuTrig)
     smu.write(":trig:coun "+str(points))
 
     #Turn on output switch
-    smu.write(":outp on")
+    smu.write(ds.smuOn)
 
     #Initiate transition and acquire
-    smu.write(":init (@1)")
-    while not smu.query("*OPC?"):
-        time.sleep(0.1)
+    smu.write(ds.smuInit)
+    while not smu.query(ds.rdy):
+        lm.sleep()
     #Retrieve measurement result
-    iResult=smu.query(":fetc:arr:curr? (@1)")
+    iResult=smu.query(ds.queryCurr)
     iValues=iResult.split(",")
     iValues[-1]=iValues[-1].rstrip('\n')
-    vResult=smu.query(":fetc:arr:volt? (@1)")
+    vResult=smu.query(ds.queryVolt)
     vValues=vResult.split(",")
     vValues[-1]=vValues[-1].rstrip('\n')
 
-    smu.write(":outp off")
+    smu.write(ds.smuOff)
 
     #print(vValues)
     #print(iValues)
@@ -101,7 +91,9 @@ for j in range(1):
             break
     iValues = iValues[:zaux]
     vValues = vValues[:zaux]
-    listAux = np.arange(0 , len(vValues) , 1)
+
+    lm.file_writer_iv(vValues, iValues)
+    '''listAux = np.arange(0 , len(vValues) , 1)
 
     #Escritura fichero
     with open(path + '.txt', 'a+') as f:
@@ -112,9 +104,10 @@ for j in range(1):
             f.write('\n')
 
     with open(path + '.txt', 'a+') as f:
-        f.write('0 0\n')   
+        f.write('0 0\n')  ''' 
 
     #Print de control
     print("Prueba " + str(j+1) + " de 6 finalizada.")
 
 smu.close()
+lm.beep()
