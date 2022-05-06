@@ -3,7 +3,6 @@ import numpy as np
 from matplotlib.ticker import PercentFormatter
 from numpy.core.fromnumeric import repeat
 from numpy.core.shape_base import block
-import pyvisa
 import os
 from matplotlib.pyplot import  figure, step
 from scipy.signal import find_peaks
@@ -24,8 +23,8 @@ def acquisition(queue, entries, path, ):
     lm.delete_dir(path+'.txt')
     lm.delete_dir(path+'.png')
 
-    rta=lm.init_pyvisa(lm.return_instr("scope"))
-    #arbGen = rm.open_resource(lm.return_instr("arbGen"))
+    rta=lm.init_pyvisa("scope")
+    #arbGen = rm.open_resource("arbGen")
 
     #arbGen.write("C1:BSWV WVTP,PULSE")
     #arbGen.write("C1:BSWV WIDTH,100e-9")
@@ -53,37 +52,26 @@ def acquisition(queue, entries, path, ):
         #Print de control
         lm.counter_finish(len(valuep), entries)
 
-        try:
-            #Creacion de txt
-            if len(valuep) == entries:
-                auxLen = np.arange(0 , len(valuep) , 1)
-                with open(path + '.txt', 'w') as f:
-                    f.write(str(min(valuep)) + ' ' + str(max(valuep)) + '\n')
-                    for i in auxLen:
-                        f.write(str(valuep[i]))
-                        f.write('\n')
-
-            #Cierre seguro + print de la imagen si se ha mantenido
-                try:
-                    plt.savefig(path + '.png')
-                    rta.close() 
-                    lm.beep()
-                    os._exit(1)
-                    
-                except:
-                    rta.close() 
-                    lm.beep()
-                    os._exit(1)
-        except KeyboardInterrupt:
+        #Creacion de txt
+        if len(valuep) == entries:
             auxLen = np.arange(0 , len(valuep) , 1)
             with open(path + '.txt', 'w') as f:
                 f.write(str(min(valuep)) + ' ' + str(max(valuep)) + '\n')
                 for i in auxLen:
                     f.write(str(valuep[i]))
                     f.write('\n')
-            rta.close() 
-            lm.beep()
-            os._exit(1)
+
+        #Cierre seguro + print de la imagen si se ha mantenido
+            try:
+                plt.savefig(path + '.png')
+                rta.close() 
+                lm.beep()
+                os._exit(1)
+                    
+            except:
+                rta.close() 
+                lm.beep()
+                os._exit(1)
                 
 
 #Funcion de visualizacion

@@ -24,9 +24,11 @@ def create_dir(path):
             raise
 
 #Func para borrar directorio si existe
-def delete_dir(path):
-    if os.path.exists(path) and os.path.isdir(path):
-        shutil.rmtree(path)  
+def delete_dir(filepath):
+    if os.path.exists(filepath) and os.path.isdir(filepath):
+        shutil.rmtree(filepath)  
+    if os.path.exists(filepath) and os.path.isfile(filepath):
+        os.remove(filepath) 
 
 #Func para la creacion del ZIP
 def create_zip(path, name):
@@ -75,25 +77,22 @@ def currentTime():
     return time.time()
 
 #Func sleep
-def waiting(rta):
-    while not rta.query(ds.rdy):
+def waiting(device):
+    while not device.query(ds.rdy):
         time.sleep(0.1)
 
 #Func return instr segun dispositivo
-def return_instr(instr):
-    if instr == "scope":
-        return 'TCPIP::192.168.100.101::INSTR'
-    if instr == "smu":
-        return 'TCPIP::192.168.100.102::INSTR'
-    if instr == "arbGen":
-        return 'TCPIP::192.168.100.103::INSTR'
-
 def init_pyvisa(instr):
     rm = pyvisa.ResourceManager()
-    rta = rm.open_resource(instr)
-    return rta
+    if instr == "scope":
+        device = rm.open_resource('TCPIP::192.168.100.101::INSTR')
+    if instr == "smu":
+        device = rm.open_resource('TCPIP::192.168.100.102::INSTR')
+    if instr == "arbGen":
+        device = rm.open_resource('TCPIP::192.168.100.103::INSTR')
+    return device
 
-def file_writer_iv(vValues, iValues):
+def file_writer_iv(vValues, iValues, path):
     listAux = np.arange(0 , len(vValues) , 1)
 
     #Escritura fichero

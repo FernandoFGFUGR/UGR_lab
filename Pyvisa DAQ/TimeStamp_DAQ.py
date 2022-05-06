@@ -8,7 +8,7 @@ name=input()+"_timeStamp"
 #No tocar/Configuracion
 rta = None
 try:
-	rta=lm.init_pyvisa(lm.return_instr("scope"))
+	rta=lm.init_pyvisa("scope")
 except Exception as ex:
 	print('Error initializing the instrument session:\n' + ex.args[0])
 	exit()

@@ -1,29 +1,29 @@
-#Librerias
-import numpy as np
 import lab_module as lm
 import dictionary_SCPI as ds
 
 print('Input code name: ')
 name=input()
-print('Input vStart: ')
-vStart=float(input())
-print('Input vStop: ')
-vStop=float(input())
+#print('Input vStart: ')
+#vStart=float(input())
+#print('Input vStop: ')
+#vStop=float(input())
+print('Inverse o direct(i/d):')
+named=input()
+while named != "i" and named != "d":
+    print("Valor incorrecto, introduce de nuevo \n")
+    print('Inverse o direct(i/d):')
+    named=input()
 
-if vStart >= 0:
-    named="_direct"
-    sStep=0.01
-    if vStart > vStop:
-        aux=vStart
-        vStart = vStop
-        vStop =aux
-else:
+if named == "i":
     named="_inverse"
     sStep=0.05
-    if vStart < vStop:
-        aux=vStart
-        vStart = vStop
-        vStop =aux
+    vStart=-0
+    vStop=-30
+else:
+    named="_direct"
+    sStep=0.01
+    vStart=0
+    vStop=3
 
 #Creacion de directorios por fechas y nombres
 path=lm.path("Curve_IV")
@@ -31,7 +31,9 @@ lm.create_dir(path)
 path=path + name + named
 
 #No tocar/Configuracion
-smu=lm.init_pyvisa(lm.return_instr("smu"))
+smu=lm.init_pyvisa("smu")
+
+del smu.timeout
 
 lm.delete_dir(path + '.txt')
 
@@ -54,7 +56,7 @@ smu.write(ds.smuAuto3)
 
 count=0
 
-for j in range(1):
+for j in range(6):
 
     print('Pulse intro para comenzar prueba ' + str(j+1) + ': ')
     input()
@@ -68,8 +70,7 @@ for j in range(1):
 
     #Initiate transition and acquire
     smu.write(ds.smuInit)
-    while not smu.query(ds.rdy):
-        lm.sleep()
+    lm.waiting(smu)
     #Retrieve measurement result
     iResult=smu.query(ds.queryCurr)
     iValues=iResult.split(",")
@@ -80,34 +81,20 @@ for j in range(1):
 
     smu.write(ds.smuOff)
 
-    #print(vValues)
-    #print(iValues)
-
     #Manejo de datos y lectura
     for z in range(len(iValues)):
         if abs(float(iValues[z])) >= 9.9e-03: 
             zaux = z
             #print(zaux)
             break
+        else:
+            zaux=len(iValues)
     iValues = iValues[:zaux]
     vValues = vValues[:zaux]
 
-    lm.file_writer_iv(vValues, iValues)
-    '''listAux = np.arange(0 , len(vValues) , 1)
-
-    #Escritura fichero
-    with open(path + '.txt', 'a+') as f:
-        for i in listAux:
-            f.write(str(iValues[i]))
-            f.write(' ')
-            f.write(str(vValues[i]))
-            f.write('\n')
-
-    with open(path + '.txt', 'a+') as f:
-        f.write('0 0\n')  ''' 
-
+    lm.file_writer_iv(vValues, iValues, path)
     #Print de control
     print("Prueba " + str(j+1) + " de 6 finalizada.")
 
 smu.close()
-lm.beep()
+#lm.beep()
