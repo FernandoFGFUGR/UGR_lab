@@ -11,8 +11,6 @@ channel=str(1)
 
 startTime = lm.currentTime()
 
-lm.chronometter(startTime, 30)
-
 #Creacion de directorios por fechas y nombres
 path=lm.path("Waveform")
 lm.create_dir(path)
@@ -29,8 +27,6 @@ except Exception as ex:
 	print('Error initializing the instrument session:\n' + ex.args[0])
 	exit()
 
-rta.write("STOP")
-
 del rta.timeout
 
 rta.write(ds.ascii)
@@ -39,8 +35,8 @@ trigg=rta.query(ds.numCounts)
 #trigg=10
 for i in range(int(trigg)):
     
-    rta.write(ds.selectCurr(trigg, i))
-    y_aux=rta.query(ds.waveform(channel))
+    rta.write(ds.selectCurrMath(trigg, i))
+    y_aux=rta.query(ds.waveformMath(channel))
     y=[float(i) for i in y_aux.split(',')]
 
     lm.waiting(rta)

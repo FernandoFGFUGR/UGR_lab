@@ -46,7 +46,8 @@ def beep():
 
 #Func contador en porcentaje
 def counter_finish(i, finish):
-    print(str(round(i/int(finish)*100, 3))+" %")
+    #if (round(i/int(finish)*100, 3)%10 == 0):
+    print(str(round(i/int(finish)*100, 2))+" %")
 
 #Func creacion fichero data (waveform)
 def create_data(path, rta, startTime, len):
@@ -105,3 +106,8 @@ def file_writer_iv(vValues, iValues, path):
 
     with open(path + '.txt', 'a+') as f:
         f.write('0 0\n')
+
+def chronometter(startTime, t):
+    while(round(((currentTime() - startTime)/60),2) < 30):
+        time.sleep(0.1)
+        print(round(((currentTime() - startTime)/60),2))

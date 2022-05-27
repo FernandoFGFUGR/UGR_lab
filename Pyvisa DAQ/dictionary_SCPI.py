@@ -31,5 +31,11 @@ smuOff=":outp off"
 def selectCurr(trigg, i):
     return "CHAN:HIST:CURR " + str(-int(trigg)+(i+1))
 
+def selectCurrMath(trigg, i):
+    return "CALC:MATH1:HIST:CURR " + str(-int(trigg)+(i+1))
+
 def waveform(channel):
     return "CHAN"+channel+":DATA?"
+
+def waveformMath(channel):
+    return "CALC:MATH"+channel+":DATA?"
