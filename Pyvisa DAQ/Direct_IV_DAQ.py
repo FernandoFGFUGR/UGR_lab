@@ -11,7 +11,7 @@ name=input()
 
 #print('Input numero de pruebas: ')
 #ntest=int(input())
-ntest=6
+ntest=2
 
 #Creacion de directorios por fechas y nombres
 path='Desktop/Laboratorio/Programacion-Automatizacion/Pyvisa/Output/Curve_IV/'+str(date.today())+"/"

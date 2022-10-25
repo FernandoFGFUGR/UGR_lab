@@ -9,6 +9,8 @@ import time
 import pyvisa
 import dictionary_SCPI as ds
 import numpy as np
+import paramiko
+from getpass import getpass; from getpass import getuser
 
 #Func return de path output
 def path(file):
@@ -46,7 +48,7 @@ def beep():
 
 #Func contador en porcentaje
 def counter_finish(i, finish):
-    #if (round(i/int(finish)*100, 3)%10 == 0):
+    #if (round(i/int(finish)*100, 1)%5 == 0):
     print(str(round(i/int(finish)*100, 2))+" %")
 
 #Func creacion fichero data (waveform)
@@ -86,11 +88,13 @@ def waiting(device):
 def init_pyvisa(instr):
     rm = pyvisa.ResourceManager()
     if instr == "scope":
-        device = rm.open_resource('TCPIP::192.168.100.101::INSTR')
+        device = rm.open_resource('TCPIP::192.168.0.32::INSTR')
     if instr == "smu":
-        device = rm.open_resource('TCPIP::192.168.100.102::INSTR')
+        device = rm.open_resource('TCPIP::192.168.0.33::INSTR')
     if instr == "arbGen":
-        device = rm.open_resource('TCPIP::192.168.100.103::INSTR')
+        device = rm.open_resource('TCPIP::192.168.0.34::INSTR')
+    if instr == "powerSupply":
+        device = rm.open_resource('TCPIP::192.168.0.35::INSTR')
     return device
 
 def file_writer_iv(vValues, iValues, path):
@@ -108,6 +112,9 @@ def file_writer_iv(vValues, iValues, path):
         f.write('0 0\n')
 
 def chronometter(startTime, t):
-    while(round(((currentTime() - startTime)/60),2) < 30):
-        time.sleep(0.1)
-        print(round(((currentTime() - startTime)/60),2))
+    while(round(((currentTime() - startTime)/60),2) < t):
+        time.sleep(0.99)
+        os.system('cls' if os.name == 'nt' else 'clear')
+        min, sec = divmod((currentTime() - startTime), 60)
+        #print(round(((currentTime() - startTime)/60),2))
+        print(str(int(min)) + ":" + str(int(sec)))

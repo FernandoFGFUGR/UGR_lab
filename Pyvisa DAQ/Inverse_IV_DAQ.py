@@ -11,7 +11,7 @@ name=input()
 
 #print('Input numero de pruebas: ')
 #ntest=int(input())
-ntest=6
+ntest=2
 
 #Creacion de directorios por fechas y nombres
 path='Desktop/Laboratorio/Programacion-Automatizacion/Pyvisa/Output/Curve_IV/'+str(date.today())+"/"
@@ -60,7 +60,7 @@ for i in range(ntest):
     ttiSupply.write('OP1 1')
 
     #Voltaje en el que comienza el barrido
-    vstart=37
+    vstart=40
     ttiSupply.write('V1 '+str(vstart))
     time.sleep(1)
 

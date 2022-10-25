@@ -11,7 +11,7 @@ channel=str(1)
 
 startTime = lm.currentTime()
 
-lm.chronometter(startTime, 30)
+lm.chronometter(startTime, 25)
 
 #Creacion de directorios por fechas y nombres
 path=lm.path("Waveform")

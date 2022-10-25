@@ -2,6 +2,7 @@
 import pyvisa
 import numpy as np
 import matplotlib.pyplot as plt
+import pyfirmata
 
 def PT100(R):
     v = 31.64259588293078
@@ -52,7 +53,8 @@ rm = pyvisa.ResourceManager('@py')
 rm.list_resources()
 
 #Agregamos cada dispositivo al puerto donde esten conectados, Port1=ASRL5::INSTR, Port2=ASRL6::INSTR, Port3=ASRL7::INSTR, Port4=ASRL8::INSTR,
-keithleyE = rm.open_resource('ASRL5::INSTR')
+keithleyE = rm.open_resource('ASRL3::INSTR')
+board = pyfirmata.Arduino('COM8')
 
 #Ajustes de comunicacion
 keithleyE.read_termination = '\n'
@@ -86,3 +88,7 @@ while True:
     print(str(TempC) + ' °C')
     line1 = live_plotter(x_vec,y_vec,line1)
     y_vec = np.append(y_vec[1:],0.0)
+    if (TempC > 30):
+        board.digital[4].write(1)
+    else:
+        board.digital[4].write(0)
