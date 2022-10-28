@@ -1,0 +1,97 @@
+.bg-about {
+    background: url(/assets/pattern-background.jpg) no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+}
+
+span.alternate {
+    color: #ff6600;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.about .content-block .description-two {
+    margin-bottom: 30px;
+}
+
+.about .content-block .description-two p {
+    font-size: 0.9375em;
+    margin-top: 30px;
+    text-align: justify;
+}
+
+.btn-main-md {
+  background: #ffc107;
+  padding: 5px 30px;
+  margin-bottom: 3px;
+}
+
+.btn-main-md:hover {
+  color: #fff;
+  background: #ff9800;
+}
+.btn-main-md:focus {
+  color: #fff;
+  box-shadow: none;
+}
+
+.about .image-block {
+  padding: 15px;
+  width: 65%;
+}
+
+section > div > div > div.col-lg-4.col-md-6.align-self-center {
+  margin-top: 60px;
+}
+
+section > div > div > div.col-lg-4.col-md-6.align-self-center {
+  margin-top: 75px;
+}
+
+.about .image-block img {
+  border-radius: 100%;
+  box-shadow: 0px 0px 59px 0px rgba(11, 29, 66, 0.15);
+}
+
+.shadow, .testimonial .testimonial-item .comment:hover, .news-hr .news-post-hr:hover, ul.pagination .active a, ul.pagination li a:hover, ul.pagination li a:focus, .sponsors .block .image-block:hover, .schedule.two .schedule-contents, .speakers.white .speaker-item:hover {
+  box-shadow: 0px 0px 30px 0px rgba(11, 29, 66, 0.15);
+}
+
+.about .content-block h2:after {
+  content: "";
+  width: 108px;
+  height: 3px;
+  background: #ff6600;
+  display: block;
+  margin: 10px 0;
+}
+
+section > div > hr {
+  width: 85%;
+  border-radius: 5px;
+  margin: 0 auto;
+  margin-top: 70px;
+}
+
+.title {
+  font-size: 54px;
+  padding-top:  60px;
+  margin-bottom: 1px;
+}
+
+.title_decoration {
+  padding-bottom: 6px;
+  width: 85px;
+  border-radius: 10px;
+  background-color: rgb(0, 0, 0);
+  text-align: justify;
+}
+
+.enlace {
+  text-decoration: none;
+  color: black;
+}
+
+.enlace:hover {
+  color: #00000080;
+}

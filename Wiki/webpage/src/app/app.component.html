@@ -1,0 +1,17 @@
+<!-- <div *ngIf="usuario && !cargando; else showLogin">
+  <div class="container">
+    <div class="text-center">
+        <app-header></app-header>
+        <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+<ng-template #showLogin>
+  <div *ngIf="cargando" class="text-center">
+    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+  </div>
+  <app-login *ngIf="!cargando"></app-login>
+</ng-template> -->
+
+<router-outlet></router-outlet>

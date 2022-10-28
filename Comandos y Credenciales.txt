@@ -1,0 +1,9 @@
+***Comandos Visual Studio Code***
+
+Al inicializar VSC, click derecho en /src -> Open in Integrated Terminal
+
+-Deplegar proyecto en local -> ng serve -o
+-Generar ficheros compilados para incluirlos en el servidor mediante FTP: ng build
+(se generará carpeta /dist/webpage)
+
+-Conectarse a servidor rápidamente mediante pestaña de "Conexión rápida" en FileZilla

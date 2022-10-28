@@ -1,0 +1,35 @@
+div > div {
+    margin-top: -30px;
+}
+
+div > div > h4 {
+    margin: 50px 0px 30px 0px;
+    text-align: center;
+    /* color: white; */
+    color: black;
+}
+
+div > form {
+    width: 60%;
+    margin: 30px auto;
+}
+
+div > div:nth-child(2) {
+    background: #51575e47;
+    /* background: #51575ee3; */
+    padding: 1px;
+    margin: 40px 300px;
+    height: 280px;
+    border: 1px solid;
+    border-radius: 15px;
+}
+
+div > div:nth-child(2) > form > div > button {
+    float: right;
+    margin-top: -15px;
+}
+
+body {
+    background-image: linear-gradient(to left, #4c94ffc7, #ffa500b5);
+    height: 100vh;
+}

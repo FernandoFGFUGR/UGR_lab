@@ -1,0 +1,37 @@
+<app-header></app-header>
+<br>
+
+<section class="full">
+  <div class="full-inner">
+    <!-- <div class="content">
+      <h1>Experimental Neutrino Physics Group of the University Of Granada</h1>
+    </div> -->
+  </div>
+</section>
+
+<div class="container" style="margin: 50px auto;">
+  <!-- <h3>Welcome to the webpage of the experimental neutrino physics group of the University of Granada!</h3>
+  <br>
+  <img src="/assets/equipo.jpg" width="100%" style="background: #66999 url(background-photo.jpg) center center cover no-repeat fixed;">
+  <br> -->
+  <h1 style="font-size: 34px;">Experimental Neutrino Physics Group of the University Of Granada</h1><br>
+  <p>Neutrinos are fascinating particles. Since their discovery, more than sixty years ago, they have been key players in the quest to understand the fundamental laws of Nature. Nowadays, given the unsuccessful searches of new particles like dark matter candidates, solar axions or supersymmetric particles, neutrinos provide the only experimental clue beyond the limits of the Standard Model of Particle Physics to further investigate the nature of matter and the evolution of the Universe.</p>
+  <p>The experimental neutrino physics group of the <a href="https://www.ugr.es/" style="text-decoration: none;" target="_blank">University of Granada</a> was founded with the spirit of answering these questions by means of cutting-edge research developed in Spain. We are a group of young, enthusiastic and committed researchers willing to face the experimental challenges of the upcoming decades and be part of the next breakthrough in neutrino physics. We combine the exceptional know-how of a group with a long tradition in ultra-high-energy physics, with new ideas and a modern perspective brought to Granada after years of training and expertise acquired in world-lead research centres in Europe and the USA.</p>
+  <p>We are currently part of the international effort dedicated to build two of the experiments that will lead the future of the neutrino physics, <a href="https://sbn-nd.fnal.gov/" style="text-decoration: none;" target="_blank">SBND</a> and <a href="https://www.dunescience.org/" style="text-decoration: none;" target="_blank">DUNE</a>. Both experiments, based on the technology of time projection chambers with liquid argon, will detect neutrinos produced at Fermilab (USA) at different distances from the production source. SBND will study the hypothesis of a new type of neutrino while DUNE will determine the mass ordering and measure the CP-violating phase. We are full members of both collaborations since 2020, holding leading positions in simulation and hardware tasks.</p>
+
+</div>
+
+<br>
+<app-footer></app-footer>
+
+<div class="grdp" role="alert" [hidden]="!showCookieMessage">
+    <p>
+      <strong>GDPR (Reglamento General Protección de Datos)</strong>
+       <br>
+       Utilizamos cookies propias y de terceros para mejorar nuestros servicios relacionados con tus preferencias mediante el análisis de tus hábitos de navegación.
+       Puede obtener más información en nuestra <a routerLink="/cookies" target="_blank">Política de Cookies.</a>
+       Pulse el botón ACEPTAR, para confirmar que ha leído y aceptado la información presentada. Después de aceptar no volveremos a mostrar este mensaje tras 72 horas.
+    </p>
+    <button type="button" class="btn btn-primary bcgrdp" (click)="acceptCookies()">Aceptar</button>
+    <button type="button" class="btn btn-danger bcgrdp" (click)="rejectCookies()">Rechazar</button>
+</div>

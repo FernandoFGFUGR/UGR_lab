@@ -1,0 +1,30 @@
+<app-header></app-header>
+<div class="container" style="margin: 185px auto;">
+
+    <div class="text-center">
+        <img src="assets/ugr_logo.png" alt="" width="400px">
+    </div>
+
+    <form [formGroup]="formularioLogin">
+      <div class="form-group">
+        <label for="email">Correo electrónico</label>
+        <input type="email" class="form-control" id="email" formControlName="email" placeholder="Ingrese su correo electrónico" (ngModel)="this.formularioLogin.value.email">
+      </div>
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input type="password" (keyUp.enter)="loginService()" class="form-control" id="password" formControlName="password" placeholder="Ingrese su contraseña" (ngModel)="this.formularioLogin.value.password">
+      </div>
+
+      <div><a routerLink="/reset">¿Has olvidado la contraseña?</a></div>
+      <button type="submit" (click)="loginService()" class="btn btn-primary" [disabled]="!formularioLogin.valid">Entrar</button>
+
+      <div *ngIf="!datosCorrectos && !formularioLogin.dirty" class="alert alert-danger" role="alert">
+        {{textoError}}
+      </div>
+    </form>
+    
+    <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "ball-atom" [fullScreen] = "true"><p style="color: white" >Iniciando Sesión</p></ngx-spinner>
+
+</div>
+
+<app-footer></app-footer>

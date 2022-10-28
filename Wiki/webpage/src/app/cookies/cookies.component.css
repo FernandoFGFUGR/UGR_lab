@@ -1,0 +1,48 @@
+header {
+    background-image: linear-gradient(black, #4c94ffc7, black);
+    padding-bottom: 50px;
+}
+
+header .container .article_container .title {
+    margin-bottom: 0.25rem;
+    text-align: center;
+    font-size: 50px;
+    color: rgb(0, 0, 0);
+}
+
+header .container .article_container .title_decoration {
+    padding-bottom: 8px;
+    width: 175px;
+    border-radius: 10px;
+    background-color: rgb(0, 0, 0);
+    text-align: justify;
+    margin-left: 372px;
+}
+
+.article_container {
+    background-color: #ffffff;
+    padding: 35px 120px;
+    text-align: justify;
+}
+
+.article_container .content {
+    background-color: #e7e7e7;
+    padding: 25px;
+    margin-top: 50px;
+}
+
+.article_container .content .heading {
+    color: rgb(0 0 97);
+    margin: 12px 0;
+    font-size: 20px;
+    font-weight: bold;
+    display: block;
+}
+
+.article_container .content .heading_title {
+    color: black;
+    margin: 12px 0;
+    font-size: 20px;
+    font-weight: bold;
+    display: block;
+}
