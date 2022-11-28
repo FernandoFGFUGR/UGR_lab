@@ -1,0 +1,16 @@
+<app-header></app-header>
+<div class="container">
+    <div class="text-center">
+        <img src="assets/reset_password.png" width="175px">
+    </div>
+
+    <div>
+      <h4>Solicitar cambio de contraseña</h4>
+      <form [formGroup]="resetForm">
+        <div class="form-group">
+          <input type="email" class="form-control" (keyUp.enter)="resetPassword()" formControlName="email" placeholder="Ingrese su correo electrónico" (ngModel)="this.resetForm.value.email"><br>
+          <button (click)="resetPassword()" type="submit" class="btn btn-primary" [disabled]="!resetForm.valid">Enviar</button>
+        </div>
+      </form>
+    </div>
+</div>  

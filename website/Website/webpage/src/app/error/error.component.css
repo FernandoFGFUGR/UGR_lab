@@ -1,0 +1,73 @@
+header {
+	background-image: linear-gradient( #004586, rgb(0 0 0 / 90%), rgba(0, 5, 37, 0.8) );
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	height: 800px;
+	margin-bottom: -16px;
+}
+
+header .menu {
+	margin: 70px 0;
+	text-align: right;
+}
+
+header .menu img {
+	float: left;
+	width: 265px;
+	margin-top: -15px;
+}
+
+header .menu .btn {
+	font-size: 1.1rem
+}
+
+.space_img {
+    width: 500px;
+    border-radius: 20px;
+    margin-top: 90px;
+    margin-left: 100px;
+}
+
+._404_img {
+	width: 200px;
+    margin-left: 100px;
+    margin-top: 50px;
+	border-radius: 20px;
+}
+
+.article .article1_text {
+	margin: 138px 40px 130px 134px;
+}
+
+.article .article_title {
+	margin: -40px 50px 15px 90px;
+    font-size: 60px;
+    line-height: 34px;
+    color: white;
+}
+
+.article .article_subtitle {
+	font-size: 35px;
+    margin-top: 45px;
+    margin-left: 16%;
+    color: cornflowerblue;
+}
+
+.article .article1_img {
+	display:block;
+	margin: 50px auto;
+	width: 180px;
+	transition: all 500ms ease-in-out;
+}
+
+.separation_line {
+	height: 12px;
+	background-color:  rgb(27 27 27);
+	padding-bottom: 12px;
+}
+
+header > div > section > div {
+	margin-top: 85px;
+	padding-top: 50px;
+}
