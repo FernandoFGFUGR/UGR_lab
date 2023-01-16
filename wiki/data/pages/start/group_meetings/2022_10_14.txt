@@ -1,0 +1,21 @@
+====== Group Meeting 14 October 2022 ======
+
+----
+
+=== LAB ===
+
+  * Fernando - Resumen visita Bolonia/Ferrara {{ :start:group_meetings:avance_14-10_ferfuefer.pdf |}}
+  * Elena - PDE set-up {{ :start:group_meetings:pde_14_10_22.pdf |}}
+
+=== ANALYSIS ===
+
+  * Fran - Update lambdas {{ :start:group_meetings:frannicolas_141022.pdf |}}
+  * Bruno - neutrino-electron scattering reco vs true {{ :start:group_meetings:nu_e_scattering_update_1007.pdf |}}
+
+
+=== SIMULATIONS ===
+
+  * Alejandro - PMT Cross-talk {{ :start:group_meetings:presentacion_alejandro_sanchez_1410.pdf |}}
+=== OTHERS ===
+
+  * Any other topic to discuss during the group meeting: organisation, purchasing, complaints  ...

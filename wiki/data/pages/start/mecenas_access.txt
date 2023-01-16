@@ -1,0 +1,42 @@
+====== Getting Mecenas access with the TUI ======
+
+To allow servers to update your personal information, wait a couple of days from the formalization of the contract to start this procedure. If any questions arise, ask the reception manager. His office can be found in the Mecenas building (in front of the Intern office).
+
+To get access to the Mecenas building, send an email to gestionaccesosfc@ugr.es. Write "Acceso Mecenas" in the header, and say that you want to access the Mecenas Building in the body. 
+
+After sending the mail, you will receive a response with instructions to follow and a form to complete. Firstly, enter your institutional email address (ex.: account_name@ugr.es) in the form. Then, you will get the following sections to fill in:
+
+{{:start:tuiaccessform1.png?400|}}
+
+
+
+
+{{:start:tuiaccessform2.png?400|}}
+
+Once you have completed the form you will receive an email indicating if anything is missing. If everything is correct, you will receive an email indicating that your card has been authorized.
+
+To update the card permits, you must pass it through a card reader installed in the University of Granada buildings, usually at the entrance. In the case of the Sciences Faculty, you can find the reader on the right side of the main entrance. If you do not find its position, ask reception.
+
+{{:start:sciencetuicardreader1.png?400|}}
+
+{{:start:scientetuicardreader2.png?400|}}
+
+To update the TUI approach it to the reader and wait until it flashes green then, you will get access to the Mecenas building.
+
+====== Frequently asked questions: ======
+
+
+**What is my employment relationship with the Sciences Faculty?**
+
+If you do not know if you are a PDI or a PAS, search for your employment relationship in the UGR staff directory. When applying to the Department of Theoretical Physics and Cosmology, please see: [[https://directorio.ugr.es/static/PersonalUGR/*/entidad/02B080]].
+
+**What document should I attach?**
+
+Attach an access authorization to the department in which you work. This authorization must be signed by the department director or the researcher in charge of the project you are working on. In the case of this research group refer to Antonio Bueno Villar (a.bueno@ugr.es).
+
+**Where can I get my TUI?**
+
+For instructions on obtaining the TUI visit: [[start:getting_tui|]].
+
+
+

@@ -1,0 +1,19 @@
+a:2:{s:7:"current";a:9:{s:4:"date";a:2:{s:7:"created";i:1669380979;s:8:"modified";i:1673262985;}s:7:"creator";s:23:"Fernando Fuentes-Guerra";s:4:"user";s:13:"ferfuentguerr";s:11:"last_change";a:8:{s:4:"date";i:1673262985;s:2:"ip";s:12:"172.20.28.79";s:4:"type";s:1:"E";s:2:"id";s:13:"start:newbies";s:4:"user";s:13:"ferfuentguerr";s:3:"sum";s:0:"";s:5:"extra";s:0:"";s:10:"sizechange";i:61;}s:11:"contributor";a:3:{s:13:"ferfuentguerr";s:23:"Fernando Fuentes-Guerra";s:10:"lpelegrina";s:14:"Luis Pelegrina";s:9:"bzamorano";s:14:"Bruno Zamorano";}s:5:"title";s:16:"Info for newbies";s:11:"description";a:2:{s:15:"tableofcontents";a:1:{i:0;a:4:{s:3:"hid";s:16:"info_for_newbies";s:5:"title";s:16:"Info for newbies";s:4:"type";s:2:"ul";s:5:"level";i:1;}}s:8:"abstract";s:400:"Info for newbies
+
+	*  Once you have an @ugr.es email account, request to be added to the group mailing list and Slack workspace, by sending an email to bzamorano@ugr.es
+
+RSA-SSH Auth Tutorial
+
+Bash prompt generator
+
+Change Wiki Password, Getting your institutional email address
+
+Getting the TUI
+
+Getting Access to Mecenas building with TUI
+
+SBND Mailing lists
+
+Useful links
+
+Create personal homepage";}s:8:"relation";a:2:{s:10:"references";a:8:{s:18:"start:rsa-ssh_auth";b:1;s:27:"start:bash_prompt_generator";b:1;s:46:"start:change_wiki_password_institutional_email";b:1;s:17:"start:getting_tui";b:1;s:20:"start:mecenas_access";b:1;s:24:"start:sbnd_mailing_lists";b:1;s:18:"start:useful_links";b:1;s:30:"start:create_personal_homepage";b:1;}s:10:"firstimage";s:0:"";}s:8:"internal";a:2:{s:5:"cache";b:1;s:3:"toc";b:1;}}s:10:"persistent";a:5:{s:4:"date";a:2:{s:7:"created";i:1669380979;s:8:"modified";i:1673262985;}s:7:"creator";s:23:"Fernando Fuentes-Guerra";s:4:"user";s:13:"ferfuentguerr";s:11:"last_change";a:8:{s:4:"date";i:1673262985;s:2:"ip";s:12:"172.20.28.79";s:4:"type";s:1:"E";s:2:"id";s:13:"start:newbies";s:4:"user";s:13:"ferfuentguerr";s:3:"sum";s:0:"";s:5:"extra";s:0:"";s:10:"sizechange";i:61;}s:11:"contributor";a:3:{s:13:"ferfuentguerr";s:23:"Fernando Fuentes-Guerra";s:10:"lpelegrina";s:14:"Luis Pelegrina";s:9:"bzamorano";s:14:"Bruno Zamorano";}}}

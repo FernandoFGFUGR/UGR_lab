@@ -1,0 +1,17 @@
+====== Neutrino UGR Wiki  ======
+
+Welcome to the Wiki of the Neutrino group of the University of Granada 
+
+{{  :logo_black.png?300|}}
+
+^ Organization        ^ Lab  ^ Experiments     ^ Others  ^ 
+| [[:start:group_meetings| Group Meetings]]  | [[:start:massive_tests| Massive Test Set-Up]]  |  [[:start:sbnd| SBND]]  | [[:start:tfm| TFM]]    | 
+| [[https://neutrino.ugr.es/|Group Page]]  | [[:start:sipm_tests| SiPM Characterization]]  |  [[:start:dune| DUNE]]  | [[:start:tfg| TFG]]    | 
+| [[:start:newbies| Info for Newbies]]  | [[:start:pde_tests| PDE Set-Up]]  |    |   | 
+| [[:start:fermilab| Fermilab Account]]  | [[:start:invoices| Invoices]]  |    |   | 
+| [[:start:computer_inventory| Computer Inventory]]  | [[:start:lab_inventory| Lab Inventory]]  |    | 
+| [[:start::travel| Travelling]] | [[:start::purifying_system| Purifying System]] | | |
+
+----
+  
+**NOTE:** Please, only store here information that may be useful for the group and avoid any material that is not related to our work.

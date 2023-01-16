@@ -1,0 +1,19 @@
+====== Info for newbies ======
+
+  * Once you have an @ugr.es email account, request to be added to the group mailing list and Slack workspace, by sending an email to bzamorano@ugr.es
+
+[[start:RSA-SSH Auth|RSA-SSH Auth Tutorial]]
+
+[[start:Bash prompt generator|Bash prompt generator]]
+
+[[start:Change Wiki Password Institutional email|Change Wiki Password, Getting your institutional email address]]
+
+[[start:Getting TUI|Getting the TUI]]
+
+[[start:Mecenas Access|Getting Access to Mecenas building with TUI]]
+
+[[start:SBND Mailing lists|SBND Mailing lists]]
+
+[[start:Useful links|Useful links]]
+
+[[start:Create personal homepage|Create personal homepage]]

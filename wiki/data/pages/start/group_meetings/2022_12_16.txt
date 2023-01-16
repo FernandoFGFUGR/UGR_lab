@@ -1,0 +1,20 @@
+====== Group Meeting 16 December 2022 ======
+
+----
+
+=== LAB ===
+
+  * Patricia: {{ :start:group_meetings:2022_12_16_patricia.pdf | SiPMs Tests for ProtoDUNE-VD }}
+
+=== ANALYSIS / RECONSTRUCTION ===
+  * Fran: {{ :start:group_meetings:fran_nicolas_16_12.pdf | Hyperon Selection Update}}
+
+=== SIMULATIONS ===
+
+  * Alejandro: {{ :start:group_meetings:alejandrosanchez_16_12.pdf | Light Simulation Update}}
+
+=== OTHERS ===
+
+  * Último día laborable del año?
+
+  

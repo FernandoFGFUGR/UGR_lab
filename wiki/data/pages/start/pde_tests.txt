@@ -1,0 +1,8 @@
+
+====== PDE SET-UP ======
+
+Below you can find the documents that describe the setup, the measurements and the data sheet of all the components used
+
+  * {{ :start:pde_montaje.pdf | Montaje experimental PDE}}
+  * {{ :start:pde_medidas.pdf | Medidas y análisis PDE}}
+  * {{ :start:datasheet.zip | Datasheet}}

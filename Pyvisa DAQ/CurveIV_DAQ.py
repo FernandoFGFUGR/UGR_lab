@@ -18,12 +18,12 @@ if named == "i":
     named="_inverse"
     sStep=0.05
     vStart=-0
-    vStop=-30
+    vStop=-45
 else:
     named="_direct"
     sStep=0.01
     vStart=0
-    vStop=3
+    vStop=5
 
 #Creacion de directorios por fechas y nombres
 path=lm.path("Curve_IV")

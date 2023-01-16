@@ -1,0 +1,77 @@
+Fernando's personal page :\\
+
+**DATOS UNIVERSIDAD:**\\
+NIF:Q1818002F\\
+Dirección de facturación: Avenida del Hospicio, 1, 18071 Granada\\
+
+**TAREAS PATRICIA**\\
+
+Mudar pagina web a formato mas sencillo\\
+[[Webpage|Seguimiento nueva webpage]]
+
+**Contactar proveedores honeywell**\\
+CAPTURA DE DATOS CYS, S.L.\\
+Email: info@cdcys.es\\
+Phone: 958623999\\
+Website: http://www.cdcys.es\\
+cdcys.escdcys.es\\
+
+TRAZATECH SLU\\
+Email: javier.montanez@trazatech.com\\
+Phone: +34 656 94 94 77\\
+Website: https://trazatech.com\\
+trazatech.comtrazatech.com\\
+
+Instalar phpMyAdmin (German)\\
+
+**Setup Italia:**\\
+
+-Conseguir ras Berry para probar software\\
+-Pedir placa metálica\\
+-Descargar software ras Berry (Error con extension?)\\
+
+**COMPRAR:**\\ 
+[[https://www.amazon.es/dp/B07XSHT19W?th=1&linkCode=sl1&tag=lectoresdc-21&linkId=68f8a973751bba85e15e7b2a538a8075&language=es_ES&ref_=as_li_ss_tl | Inateck(5)]] \\
+[[https://www.amazon.es/dp/B07D3T5KNJ?linkCode=sl1&tag=lectoresdc-21&linkId=790418ec3e50c1243dc5f911a0903016&language=es_ES&ref_=as_li_ss_tl&th=1 | Tera(2)]] \\
+[[https://www.amazon.es/dp/B08JCFMMPW?tag=zonatech.es-21&linkCode=ogi&th=1&psc=1 | Eyoyo(2)]] \\
+[[https://www.amazon.es/dp/B07P337LVG?tag=zonatech.es-21&linkCode=ogi&th=1&psc=1 | Netum(4)]] \\
+
+HONEYWELL XEON \\
+Modelo nuevo oferta: [[https://www.amazon.com/-/es/Honeywell-1950G-HD-densidad-escáner-código/dp/B009O7SCPA/ref=sr_1_3?__mk_es_US=ÅMÅŽÕÑ&crid=3T5LRIKFNFKBT&keywords=honeywell+1952+g&qid=1673261812&sprefix=honeywell+1952g%2Caps%2C180&sr=8-3 | 1952g]] \\
+Modelo de Tommaso: [[https://www.amazon.com/-/es/Honeywell-1902GSR-2USB-5-1902-Decodifica-simbologías/dp/B00481EAWG/ref=sr_1_2?crid=2XETYF3O8ZYEA&keywords=honeywell+1902gsr&qid=1673261981&sprefix=honeywell+1902%2Caps%2C164&sr=8-2 | 1902]] \\
+Modelo Tommaso con cable: [[https://www.amazon.com/-/es/Honeywell-1900G-HD-densidad-Escáner-código/dp/B00LRAO3DC/ref=sr_1_6?crid=2XETYF3O8ZYEA&keywords=honeywell+1902gsr&qid=1673261927&sprefix=honeywell+1902%2Caps%2C164&sr=8-6 | 1900]] \\
+
+
+
+
+**ENLACES:** \\
+
+[[https://electronics.stackexchange.com/questions/649309/doubt-about-grounding-loop-and-shielding | GROUNDING LOOPS]]\\
+
+**FOTOS:** \\
+{{:img20221005095941.jpg?direct&200|}}
+{{:img20221005103326.jpg?direct&200|}}
+{{:img20221005103331.jpg?direct&200|}}
+{{:img20221005103336.jpg?direct&200|}}
+{{:img20221005103418.jpg?direct&200|}}
+{{:img20221005103546.jpg?direct&200|}}
+{{:img20221005103848.jpg?direct&200|}}
+{{:img20221005103854.jpg?direct&200|}}
+{{:img20221005103908.jpg?direct&200|}}
+{{:img20221005103914.jpg?direct&200|}}
+{{:img20221005103953.jpg?direct&200|}}
+{{:img20221005104009.jpg?direct&200|}}
+{{:img20221005104014.jpg?direct&200|}}
+{{:img20221005104131.jpg?direct&200|}}
+{{:img20221005104155.jpg?direct&200|}}
+{{:img20221005115147.jpg?direct&200|}}
+{{:img20221005144000.jpg?direct&200|}}
+{{:img20221006102936.jpg?direct&200|}}
+{{:img20221006102940.jpg?direct&200|}}
+{{:img20221006102945.jpg?direct&200|}}
+{{:img20221006105236.jpg?direct&200|}}
+{{:img20221006153846.jpg?direct&200|}}
+
+**CV:**
+{{ ::fernando_fuentes.pdf |}}\\
+{{:fuentes-guerra_fernandez_fernando_cv_english.png?linkonly|}}\\

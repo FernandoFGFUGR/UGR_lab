@@ -1,0 +1,11 @@
+====== Bash Prompt Generator ======
+
+If you want to change how your prompt looks change the .profile file on you /nashome directory. Simply add:
+
+''# set prompt''       
+         
+''# PS1="<`hostname`> "; export PS1''      
+                                                                           
+''export PS1='yourpromptconfig' ''
+
+When writing a configuration an online generator like [[https://scriptim.github.io/bash-prompt-generator/|Prompt Generator]] might be useful.

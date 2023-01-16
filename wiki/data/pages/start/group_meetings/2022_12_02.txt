@@ -1,0 +1,25 @@
+====== Group Meeting 02 December 2022 ======
+
+----
+
+=== LAB ===
+
+  * SiPM tests for ProtoDUNE-VD just started. People working in the lab
+  * Updates: IV-curve OK at room temperature & LN2. DCR work in progress
+
+ {{ :start:group_meetings:img_5918.jpg?400 }}
+
+=== ANALYSIS / RECONSTRUCTION ===
+
+  * Bruno - Charla presentada en el meeting de reconstrucción (algoritmo PCA desarrollado por Marina) {{ :start:group_meetings:showerdirection_maxpca.pdf |}}
+
+=== SIMULATIONS ===
+
+  * Luis - Informe semanal {{ :start:group_meetings:presentacio_nluis28_11-02_12.pdf |}}
+
+=== OTHERS ===
+
+  * Any other topic to discuss during the group meeting: organization, purchasing, complains  ...
+  * Fran - Charlas para el Collaboration Meeting
+    * PDS reco: {{:start:group_meetings:wintercm_pdsnewreco1.pdf | WinterCM_PDS}}
+    * Hiperones: {{:start:group_meetings:wintercm_qehyperonselection.pdf | WinterCM_Hiperones}}

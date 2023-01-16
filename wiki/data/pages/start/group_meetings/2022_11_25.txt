@@ -1,0 +1,22 @@
+====== Group Meeting 25 November 2022 ======
+
+----
+
+=== LAB ===
+
+  * Fernando - Updates
+  * Elena - Updates
+  * Patricia - SiPM tests for ProtoDUNE-VD {{:start:group_meetings:2022_11_24_patricia.pdf |Slides}}
+
+=== ANALYSIS ===
+
+  * Fran - Test PDS calorimetry {{:start:group_meetings:2022_11_25_fran_lightcalo.pdf | Slides}}
+
+
+=== SIMULATIONS ===
+
+  * Alejandro - LArSoft Light Simulation: Update  {{:start:group_meetings:alejandrosanchez_25_11.pdf | Slides}}
+
+=== OTHERS ===
+
+  * Any other topic to discuss during the group meeting: organisation, purchasing, complaints  ...

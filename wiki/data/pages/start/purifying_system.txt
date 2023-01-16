@@ -1,0 +1,11 @@
+====== Argon Purifying System  ======
+
+Documents provided by Criotec Impianti in November 2022:
+
+  * User Manual:{{:start:ma-2157_rev1.pdf | Documentation}}
+
+
+There's some ancient (local) documentation available for the purifying system (albeit in Spanish):
+
+  * Notes and operation manual:{{ :start:2993_001.pdf | Notes}}
+  * Diagrams and blueprints:{{ :start:2994_001.pdf | Diagrams}}

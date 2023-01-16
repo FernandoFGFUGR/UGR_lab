@@ -1,0 +1,16 @@
+====== Group Meeting 13 January 2023 ======
+
+----
+
+=== LAB ===
+
+  
+=== ANALYSIS / RECONSTRUCTION ===
+
+  * Luis: {{ {{ :start:group_meetings:presentacio_nluis09_01-12_01.pdf | HNL Simulation Update}}
+
+
+=== SIMULATIONS ===
+
+  * Alejandro: {{ :start:group_meetings:alejandro_sanchez_13_01.pdf | Light Simulation Update}}
+

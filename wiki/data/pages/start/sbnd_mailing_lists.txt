@@ -1,0 +1,18 @@
+====== Subscribing to Fermilab mailing lists ======
+
+To subscribe or unsubscribe to Fermilab mailing lists see [[https://sbn-nd.fnal.gov/internal/mailing_lists.html|Fermilab 
+Mailing Lists]].
+
+==To subscribe to Fermilab mailing lists:==
+
+  - Click on the subscribe link which should pop up an email window.
+  - Replace FIRSTNAME LASTNAME with your first and last name in the body of the email.
+  - Leave the subject blank.
+  - Be sure you are sending the message from the email address that you wish to subscribe.
+  - Send the mail.
+
+==To unsubscribe to Fermilan mailing lists:==
+
+  - Click on the unsubscribe link which should pop up an email window.
+  - Be sure you are sending the message from the email address that you wish to unsubscribe.
+  - Send the mail. 

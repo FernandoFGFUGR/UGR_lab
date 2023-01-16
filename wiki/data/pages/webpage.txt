@@ -1,0 +1,27 @@
+**Investigación:**\\
+
+<del>Hemos visto que Simfony puede ser la opción mas interesante, al parecer facilita mucho para webs sencillas además de adaptar todo a dispositivos móviles.
+Puede que el proyecto siga siendo pesado pero hacen hincapié en lo fácil de su modificación.
+
+**Pasos**\\
+1-Descargar CLI de Simfony con binarios o con scoop:\\
+[[https://symfony.com/download|Download]]\\
+
+2-Descargar GIT:\\
+[[https://git-scm.com/download/win|Download]]\\
+
+3-Descargar Composer:\\
+[[https://getcomposer.org/download/|Download]]\\
+
+4-Como ultima descarga necesitamos PHP, como yo desarrollo desde windows descargo directamente XAMPP que inlcuye apache y php:\\
+[[https://www.apachefriends.org/es/index.html|Download]]\\
+
+5-Voy a desarrollar la webpage desde windows con xampp, para acceder al projecto solo hay que ir a //C:\xampp\htdocs\webpage//, para programar abrimos VSCode y abrimos esta carpeta. Las carpetas importantes del projecto son **PUBLIC, SRC y TEMPLATES**. Para copiar la webpage solo copiar el contenido de esta carpeta al servidor (Sin compilar)\\
+[[https://www.youtube.com/watch?v=hT_5zEvkxS0&list=PLDbrnXa6SAzVxekjG2LBmJ5WxO4iypGlq|Youtube video]]\\
+[[https://symfony.com/doc/current/cloud/getting-started.html#installing-the-cli-tool|Symfony getting started]]\\
+</del>
+
+Pasamos de Symfony, parece otro engorro como Angular, vamos directamente con bootstrap:
+
+1-Instalamos node.js y npn:
+[[https://nodejs.org/en/download/|External Link]]

@@ -1,0 +1,22 @@
+====== Group Meeting 21 October 2022 ======
+
+----
+
+=== LAB ===
+
+  * Fernando - Updates
+  * Elena - Updates
+  * Patricia - Towards a future operational LAr cryostat {{ :start:group_meetings:lar_cryostat.pdf |}}
+
+=== ANALYSIS ===
+
+  * Fran - CAF-based Lambda analysis {{ :start:group_meetings:frannicolas_201022.pdf |}}
+  * Bruno - neutrino-electron scattering update {{ :start:group_meetings:nu_e_scattering_update_1021.pdf |}}
+
+
+=== SIMULATIONS ===
+
+  * Alejandro - LArSoft Light Simulation: Update {{ :start:group_meetings:presentacino_alejandro_sanchez_21_10.pdf |}}
+=== OTHERS ===
+
+  * Any other topic to discuss during the group meeting: organisation, purchasing, complaints  ...

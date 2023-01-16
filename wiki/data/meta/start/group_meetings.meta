@@ -1,0 +1,26 @@
+a:2:{s:7:"current";a:9:{s:4:"date";a:2:{s:7:"created";i:1669290370;s:8:"modified";i:1673265783;}s:7:"creator";s:6:"ugrlab";s:4:"user";s:6:"ugrlab";s:11:"last_change";a:8:{s:4:"date";i:1673265783;s:2:"ip";s:14:"172.17.173.204";s:4:"type";s:1:"E";s:2:"id";s:20:"start:group_meetings";s:4:"user";s:7:"pslucas";s:3:"sum";s:7:"[2022] ";s:5:"extra";s:0:"";s:10:"sizechange";i:88;}s:11:"contributor";a:2:{s:7:"pslucas";s:22:"Patricia Sanchez Lucas";s:9:"bzamorano";s:14:"Bruno Zamorano";}s:5:"title";s:14:"Group Meetings";s:11:"description";a:2:{s:15:"tableofcontents";a:3:{i:0;a:4:{s:3:"hid";s:14:"group_meetings";s:5:"title";s:14:"Group Meetings";s:4:"type";s:2:"ul";s:5:"level";i:1;}i:1;a:4:{s:3:"hid";s:11:"section2023";s:5:"title";s:4:"2023";s:4:"type";s:2:"ul";s:5:"level";i:2;}i:2;a:4:{s:3:"hid";s:11:"section2022";s:5:"title";s:4:"2022";s:4:"type";s:2:"ul";s:5:"level";i:2;}}s:8:"abstract";s:275:"Group Meetings
+
+We meet every Friday morning at 9:00 in the seminar room of our Department (Edificio Mecenas)
+
+2023
+
+January
+
+	*   2023-01-13
+
+2022
+
+December
+
+	*   2022-12-16
+	*   2022-12-02
+
+November
+
+	*   2022-11-25
+	*   2022-11-11
+
+October
+
+	*   2022-10-21
+	*   2022-10-14";}s:8:"relation";a:2:{s:10:"references";a:7:{s:31:"start:group_meetings:2023_01_13";b:1;s:31:"start:group_meetings:2022_12_16";b:1;s:31:"start:group_meetings:2022_12_02";b:1;s:31:"start:group_meetings:2022_11_25";b:1;s:31:"start:group_meetings:2022_11_11";b:1;s:31:"start:group_meetings:2022_10_21";b:1;s:31:"start:group_meetings:2022_10_14";b:1;}s:10:"firstimage";s:0:"";}s:8:"internal";a:2:{s:5:"cache";b:1;s:3:"toc";b:1;}}s:10:"persistent";a:5:{s:4:"date";a:2:{s:7:"created";i:1669290370;s:8:"modified";i:1673265783;}s:7:"creator";s:6:"ugrlab";s:4:"user";s:6:"ugrlab";s:11:"last_change";a:8:{s:4:"date";i:1673265783;s:2:"ip";s:14:"172.17.173.204";s:4:"type";s:1:"E";s:2:"id";s:20:"start:group_meetings";s:4:"user";s:7:"pslucas";s:3:"sum";s:7:"[2022] ";s:5:"extra";s:0:"";s:10:"sizechange";i:88;}s:11:"contributor";a:2:{s:7:"pslucas";s:22:"Patricia Sanchez Lucas";s:9:"bzamorano";s:14:"Bruno Zamorano";}}}

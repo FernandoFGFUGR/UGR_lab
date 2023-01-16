@@ -1,0 +1,18 @@
+====== Group Meetings ======
+
+We meet every Friday morning at 9:00 in the seminar room of our Department (Edificio Mecenas)
+
+===== 2023 =====
+=== January ===
+  * [[:start:group_meetings:2023_01_13 | 2023-01-13]]
+
+===== 2022 =====
+=== December ===
+  * [[:start:group_meetings:2022_12_16 | 2022-12-16]]
+  * [[:start:group_meetings:2022_12_02 | 2022-12-02]]
+=== November ===
+  * [[:start:group_meetings:2022_11_25 | 2022-11-25]]
+  * [[:start:group_meetings:2022_11_11 | 2022-11-11]]
+=== October ===
+  * [[:start:group_meetings:2022_10_21 | 2022-10-21]]
+  * [[:start:group_meetings:2022_10_14 | 2022-10-14]]

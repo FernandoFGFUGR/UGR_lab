@@ -1,0 +1,17 @@
+a:2:{s:7:"current";a:8:{s:4:"date";a:2:{s:7:"created";i:1670942418;s:8:"modified";i:1670942418;}s:7:"creator";s:14:"Bruno Zamorano";s:4:"user";s:9:"bzamorano";s:11:"last_change";a:8:{s:4:"date";i:1670942418;s:2:"ip";s:14:"172.17.173.149";s:4:"type";s:1:"C";s:2:"id";s:31:"start:group_meetings:2022_10_14";s:4:"user";s:9:"bzamorano";s:3:"sum";s:7:"created";s:5:"extra";s:0:"";s:10:"sizechange";i:684;}s:5:"title";s:29:"Group Meeting 14 October 2022";s:11:"description";a:2:{s:15:"tableofcontents";a:1:{i:0;a:4:{s:3:"hid";s:29:"group_meeting_14_october_2022";s:5:"title";s:29:"Group Meeting 14 October 2022";s:4:"type";s:2:"ul";s:5:"level";i:1;}}s:8:"abstract";s:256:"Group Meeting 14 October 2022
+
+----------
+
+LAB
+
+	*  Fernando - Resumen visita Bolonia/Ferrara 
+	*  Elena - PDE set-up 
+
+ANALYSIS
+
+	*  Fran - Update lambdas 
+	*  Bruno - neutrino-electron scattering reco vs true 
+
+SIMULATIONS
+
+	*  Alejandro - PMT Cross-talk";}s:8:"relation";a:2:{s:5:"media";a:5:{s:47:"start:group_meetings:avance_14-10_ferfuefer.pdf";b:1;s:37:"start:group_meetings:pde_14_10_22.pdf";b:1;s:43:"start:group_meetings:frannicolas_141022.pdf";b:1;s:52:"start:group_meetings:nu_e_scattering_update_1007.pdf";b:1;s:60:"start:group_meetings:presentacion_alejandro_sanchez_1410.pdf";b:1;}s:10:"firstimage";s:0:"";}s:8:"internal";a:2:{s:5:"cache";b:1;s:3:"toc";b:1;}}s:10:"persistent";a:4:{s:4:"date";a:1:{s:7:"created";i:1670942418;}s:7:"creator";s:14:"Bruno Zamorano";s:4:"user";s:9:"bzamorano";s:11:"last_change";a:8:{s:4:"date";i:1670942418;s:2:"ip";s:14:"172.17.173.149";s:4:"type";s:1:"C";s:2:"id";s:31:"start:group_meetings:2022_10_14";s:4:"user";s:9:"bzamorano";s:3:"sum";s:7:"created";s:5:"extra";s:0:"";s:10:"sizechange";i:684;}}}

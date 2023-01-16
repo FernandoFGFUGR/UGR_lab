@@ -1,0 +1,58 @@
+===== LArSoft installation: ======
+
+source /cvmfs/sbnd.opensciencegrid.org/products/sbnd/setup_sbnd.sh
+
+setup sbndcode v<XX_XX_XX> -q eXX:prof
+
+mrb newDev -v v<XX_XX_XX> -q prof:eXX
+
+source localProducts_larsoft_v<XX_XX_XX>_prof_eXX/setup
+
+cd srcs
+
+mrb g sbndcode
+
+mrb g -t LARSOFT_SUITE_v<XX_XX_XX> <larsoft_repository> (To make sure your LArSoft Version is compatible with your sbndcode version)
+
+mrbsetenv 
+
+mrb i -j8
+
+
+
+===== Jobsub: ======
+
+**Submit job:** project.py --xml <config.xml> --stage <stagename> --submit
+
+**Check job status:** jobsub_q --user <username>
+
+**Remove job:** jobsub_rm --group sbnd --jobid <jobid> (can also be run with --user <username> to remove all user's jobs)
+
+**Make tarball of your code:** make_tar_sbnd.sh <tar_name>. The LArSoft version to be tar is the one you have sourced.
+
+
+===== GDB debugging: ======
+
+setup gdb
+
+gdb --args lar <larsoft commands>
+
+r to run the job
+
+===== Import ROOT from Python: ======
+
+When using import ROOT in python it is mandatory that the python version for which root was built is the same as the installed in your computer. You can check your this using:
+
+root-config --has-pyroot (To check if there is a built python version)
+
+root-config --python-version (To check which version it is)
+
+After that you need to install the corresponding version and run these:
+
+source /usr/local/bin/thisroot.sh (the location of thisroot.sh can change, but you can echo it by running which root)
+
+ln -s -f /usr/local/bin/python3 /usr/local/bin/python
+
+exec $SHELL -l
+
+python --version (To check that the version has changed)

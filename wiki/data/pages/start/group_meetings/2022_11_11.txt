@@ -1,0 +1,9 @@
+====== Group Meeting 11 November 2022 ======
+
+----
+
+=== LAB ===
+
+  * Fernando - Updates
+  * Elena - Test for VD {{ :start:group_meetings:lab_11_11_22.pdf |}}
+  * Patricia - Updates

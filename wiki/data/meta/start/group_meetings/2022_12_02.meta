@@ -1,0 +1,14 @@
+a:2:{s:7:"current";a:9:{s:4:"date";a:2:{s:7:"created";i:1669904028;s:8:"modified";i:1669970416;}s:7:"creator";s:22:"Patricia Sanchez Lucas";s:4:"user";s:7:"pslucas";s:11:"last_change";a:8:{s:4:"date";i:1669970416;s:2:"ip";s:14:"172.17.173.115";s:4:"type";s:1:"E";s:2:"id";s:31:"start:group_meetings:2022_12_02";s:4:"user";s:9:"bzamorano";s:3:"sum";s:0:"";s:5:"extra";s:0:"";s:10:"sizechange";i:177;}s:11:"contributor";a:4:{s:9:"fjnicolas";s:24:"Francisco Javier Nicolas";s:10:"lpelegrina";s:14:"Luis Pelegrina";s:7:"pslucas";s:22:"Patricia Sanchez Lucas";s:9:"bzamorano";s:14:"Bruno Zamorano";}s:5:"title";s:30:"Group Meeting 02 December 2022";s:11:"description";a:2:{s:15:"tableofcontents";a:1:{i:0;a:4:{s:3:"hid";s:30:"group_meeting_02_december_2022";s:5:"title";s:30:"Group Meeting 02 December 2022";s:4:"type";s:2:"ul";s:5:"level";i:1;}}s:8:"abstract";s:327:"Group Meeting 02 December 2022
+
+----------
+
+LAB
+
+	*  SiPM tests for ProtoDUNE-VD just started. People working in the lab
+	*  Updates: IV-curve OK at room temperature & LN2. DCR work in progress
+
+ 
+
+ANALYSIS / RECONSTRUCTION
+
+	*  Bruno - Charla presentada en el meeting de reconstrucción (algoritmo PCA desarrollado por Marina)";}s:8:"relation";a:2:{s:5:"media";a:5:{s:33:"start:group_meetings:img_5918.jpg";b:1;s:47:"start:group_meetings:showerdirection_maxpca.pdf";b:1;s:53:"start:group_meetings:presentacio_nluis28_11-02_12.pdf";b:1;s:45:"start:group_meetings:wintercm_pdsnewreco1.pdf";b:1;s:52:"start:group_meetings:wintercm_qehyperonselection.pdf";b:1;}s:10:"firstimage";s:33:"start:group_meetings:img_5918.jpg";}s:8:"internal";a:2:{s:5:"cache";b:1;s:3:"toc";b:1;}}s:10:"persistent";a:5:{s:4:"date";a:2:{s:7:"created";i:1669904028;s:8:"modified";i:1669970416;}s:7:"creator";s:22:"Patricia Sanchez Lucas";s:4:"user";s:7:"pslucas";s:11:"last_change";a:8:{s:4:"date";i:1669970416;s:2:"ip";s:14:"172.17.173.115";s:4:"type";s:1:"E";s:2:"id";s:31:"start:group_meetings:2022_12_02";s:4:"user";s:9:"bzamorano";s:3:"sum";s:0:"";s:5:"extra";s:0:"";s:10:"sizechange";i:177;}s:11:"contributor";a:4:{s:9:"fjnicolas";s:24:"Francisco Javier Nicolas";s:10:"lpelegrina";s:14:"Luis Pelegrina";s:7:"pslucas";s:22:"Patricia Sanchez Lucas";s:9:"bzamorano";s:14:"Bruno Zamorano";}}}

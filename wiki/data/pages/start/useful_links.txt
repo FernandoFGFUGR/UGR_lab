@@ -1,0 +1,16 @@
+====== Useful links ======
+
+Here is a collection of some links commonly used when starting LArSoft:
+
+  * Last LArTPC Software and Analysis Workshop (8-11 November 2022): [[https://indico.ph.ed.ac.uk/event/130/timetable/#20221108.detailed|7th UK LArTPC Software and Analysis Workshop]] 
+  * LArSoft code repository: [[https://github.com/LArSoft|LArSoft github repository]]
+  * Tutorial on how to install LArSoft (Fermilab account required)[[https://cdcvs.fnal.gov/redmine/projects/sbndcode/wiki/How_to_setup_your_directory_and_launch_your_first_job|Redmine, How to setup your directory and launch your first job]]
+  * SBND Code Wiki (Fermilab account required): [[https://cdcvs.fnal.gov/redmine/projects/sbndcode/wiki|Redmine, SBND code]]
+
+Some other useful links:
+
+  * Paper containing particles PDG: [[https://pdg.lbl.gov/2007/reviews/montecarlorpp.pdf|Particles PDG]]
+  * SBN Document Database (Contains talks and documents of the collaboration):[[https://sbn-docdb.fnal.gov/cgi-bin/sso/DocumentDatabase|SBN Document Database]] 
+  * LPC Analysis Facility troubleshooting [[https://uscms.org/uscms_at_work/computing/getstarted/uaf.shtml|Connect to the LPC CAF (Central Analysis Facility)]]
+  * SBND computer access (Fermilab account required):[[https://cdcvs.fnal.gov/redmine/projects/sbndcode/wiki/Computing_Resources#Where-to-work-interactive-nodes-GPVM|Redmine, Computing resources]]
+  * SBND VNC tutorial for SBN: [[https://sbnsoftware.github.io/sbndcode_wiki/Viewing_events_remotely_with_VNC.html|Viewing events remotely with VNC]] 

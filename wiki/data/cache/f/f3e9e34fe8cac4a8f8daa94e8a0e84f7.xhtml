@@ -1,0 +1,117 @@
+
+<h2 class="sectionedit1" id="larsoft_installation">LArSoft installation:</h2>
+<div class="level2">
+
+<p>
+source /cvmfs/sbnd.opensciencegrid.org/products/sbnd/setup_sbnd.sh
+</p>
+
+<p>
+setup sbndcode v&lt;XX_XX_XX&gt; -q eXX:prof
+</p>
+
+<p>
+mrb newDev -v v&lt;XX_XX_XX&gt; -q prof:eXX
+</p>
+
+<p>
+source localProducts_larsoft_v&lt;XX_XX_XX&gt;_prof_eXX/setup
+</p>
+
+<p>
+cd srcs
+</p>
+
+<p>
+mrb g sbndcode
+</p>
+
+<p>
+mrb g -t LARSOFT_SUITE_v&lt;XX_XX_XX&gt; &lt;larsoft_repository&gt; (To make sure your LArSoft Version is compatible with your sbndcode version)
+</p>
+
+<p>
+mrbsetenv 
+</p>
+
+<p>
+mrb i -j8
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;LArSoft installation:&quot;,&quot;hid&quot;:&quot;larsoft_installation&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-424&quot;} -->
+<h2 class="sectionedit2" id="jobsub">Jobsub:</h2>
+<div class="level2">
+
+<p>
+<strong>Submit job:</strong> project.py –xml &lt;config.xml&gt; –stage &lt;stagename&gt; –submit
+</p>
+
+<p>
+<strong>Check job status:</strong> jobsub_q –user &lt;username&gt;
+</p>
+
+<p>
+<strong>Remove job:</strong> jobsub_rm –group sbnd –jobid &lt;jobid&gt; (can also be run with –user &lt;username&gt; to remove all user&#039;s jobs)
+</p>
+
+<p>
+<strong>Make tarball of your code:</strong> make_tar_sbnd.sh &lt;tar_name&gt;. The LArSoft version to be tar is the one you have sourced.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Jobsub:&quot;,&quot;hid&quot;:&quot;jobsub&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:2,&quot;range&quot;:&quot;425-816&quot;} -->
+<h2 class="sectionedit3" id="gdb_debugging">GDB debugging:</h2>
+<div class="level2">
+
+<p>
+setup gdb
+</p>
+
+<p>
+gdb –args lar &lt;larsoft commands&gt;
+</p>
+
+<p>
+r to run the job
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;GDB debugging:&quot;,&quot;hid&quot;:&quot;gdb_debugging&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:3,&quot;range&quot;:&quot;817-909&quot;} -->
+<h2 class="sectionedit4" id="import_root_from_python">Import ROOT from Python:</h2>
+<div class="level2">
+
+<p>
+When using import ROOT in python it is mandatory that the python version for which root was built is the same as the installed in your computer. You can check your this using:
+</p>
+
+<p>
+root-config –has-pyroot (To check if there is a built python version)
+</p>
+
+<p>
+root-config –python-version (To check which version it is)
+</p>
+
+<p>
+After that you need to install the corresponding version and run these:
+</p>
+
+<p>
+source /usr/local/bin/thisroot.sh (the location of thisroot.sh can change, but you can echo it by running which root)
+</p>
+
+<p>
+ln -s -f /usr/local/bin/python3 /usr/local/bin/python
+</p>
+
+<p>
+exec $SHELL -l
+</p>
+
+<p>
+python –version (To check that the version has changed)
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Import ROOT from Python:&quot;,&quot;hid&quot;:&quot;import_root_from_python&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:4,&quot;range&quot;:&quot;910-&quot;} -->

@@ -1,0 +1,17 @@
+====== How to get a Fermilab account ======
+
+To access all information regarding the creation of Fermilab Account, visit: [[https://get-connected.fnal.gov/accessandbadging/access/]]. In the link, you will find instructions to request an account.
+
+The first step is to fill in the required form. The form will depend on the action you want to take. If requesting an account for the first time, complete the form: "Are you new to the Lab?". Your project coordinator or teacher in charge may answer any doubts while supplementing the form. The approval of this ticket might take some days. 
+
+Once your ticket is approved, you will receive two emails from Fermiworks/Workday with your username and password to complete your onboarding. You will have to enter Fermiworks and complete all the required tasks. 
+
+Some days after completing the Fermiworks tasks you will receive an email with information for access to Fermilab. Your Fermilab account is online, but you will have to contact the Fermilab Service Desk (630- 840-2345 or servicedesk@fnal.gov) to get schedule a meeting to verify your identity, so your passport must be in order. After this, you will get your temporary passwords and access to Kerberus. It is advisable to call for verification, as the email might take a while.
+
+Lastly, request a computing account asociated with SBND (Or the experiment you are wonking on). Access ServiceDesk and search Experiment/Project/Collaboration/Computing Account for details regarding this operation.[[https://fermi.servicenowservices.com/wp?id=evg-catitem-browse&spa=1&sysparm_category=a5a8218af15014008638c2db58a72314|Click here to access website]]
+
+Once you enter the ticket wait for it to resolve. The procedure might take some days to complete. When finished, you will receive an email notifying you. At this point, you will have access to Fermilab, if you can't enter Kerberos wait a few days until the database is updated. For instruction on how to connect to Kerberos visit SBND computer access on [[start:useful_links|Useful links]] section of this Wiki.
+
+The first time you enter Kerberos you will have to go to  ''⁄⁄sbnd/app/users''  and create a working directory with your Fermilab account user. If you want to access the directory quicker, create a shortcut by modifying ''.profile'' in your ''/nashome'' directory. For example, add ''export WORKING="⁄⁄sbnd/app/users/youruser"'' and access the directory by typing  ''cd $WORKING''
+
+By this point you can start working using Kerberos.

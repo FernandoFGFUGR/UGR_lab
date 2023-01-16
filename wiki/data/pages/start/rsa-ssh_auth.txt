@@ -1,0 +1,8 @@
+====== RSA-SSH Auth Tutorial ======
+
+Añadiendo una clave RSA a la autentificación SSH, eliminareis el login desde vuestro ordenador, puede no parecer muy útil pero es imprescindible si se quiere programar y que se guarden los ficheros directamente al servidor.
+
+Linux/Mac: [[https://www.youtube.com/watch?v=iyazl2rbLvc|https://www.youtube.com/watch?v=iyazl2rbLvc]] \\
+Windows(Putty + Puttygen): [[https://www.youtube.com/watch?v=nzqKbmcIFdI|https://www.youtube.com/watch?v=nzqKbmcIFdI]] \\
+
+Cuando tengáis la clave pública se la enviáis al administrador.
