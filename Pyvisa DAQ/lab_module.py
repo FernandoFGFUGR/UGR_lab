@@ -14,7 +14,7 @@ from getpass import getpass; from getpass import getuser
 
 #Func return de path output
 def path(file):
-    pathOUT='Desktop/Laboratorio/Programacion-Automatizacion/Pyvisa/Output/'+ file + "/" + str(date.today())+"/"
+    pathOUT='/Users/Usuario/Desktop/Laboratorio/Programacion-Automatizacion/Pyvisa/Output/'+ file + "/" + str(date.today())+"/"
     return pathOUT
 
 #Func para la creacion de directorios
@@ -24,6 +24,27 @@ def create_dir(path):
     except OSError as e:
         if e.errno != errno.EEXIST:
             raise
+
+import os
+
+#Func para la creacion de directorios en el mismo sitio
+def create_dir_in(nombre_carpeta):
+    # Obtener la ruta del directorio de ejecución del script
+    directorio_actual = os.getcwd()
+
+    # Comprobar si la carpeta ya existe
+    carpeta = os.path.join(directorio_actual, nombre_carpeta)
+    if os.path.exists(carpeta):
+        print(f"La carpeta '{nombre_carpeta}' ya existe en el directorio actual.")
+    else:
+        try:
+            # Crear la carpeta
+            os.mkdir(carpeta)
+            print(f"Se ha creado la carpeta '{nombre_carpeta}' en el directorio actual.")
+        except OSError:
+            print(f"No se pudo crear la carpeta '{nombre_carpeta}'.")
+    return carpeta
+
 
 #Func para borrar directorio si existe
 def delete_dir(filepath):
@@ -111,10 +132,11 @@ def file_writer_iv(vValues, iValues, path):
     with open(path + '.txt', 'a+') as f:
         f.write('0 0\n')
 
-def chronometter(startTime, t):
+def chronometter(startTime, t, self=None):
     while(round(((currentTime() - startTime)/60),2) < t):
         time.sleep(0.99)
         os.system('cls' if os.name == 'nt' else 'clear')
         min, sec = divmod((currentTime() - startTime), 60)
         #print(round(((currentTime() - startTime)/60),2))
         print(str(int(min)) + ":" + str(int(sec)))
+        #self.update_idletasks()  # Actualizar la interfaz gráfica

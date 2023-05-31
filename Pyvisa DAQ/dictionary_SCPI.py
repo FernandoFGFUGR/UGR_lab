@@ -40,3 +40,7 @@ def waveform(channel):
 
 def waveformMath(channel):
     return "CALC:MATH"+channel+":DATA?"
+
+def selectChanCur(channel):
+    return "CURSor1:SOURce " + str(channel)
+
