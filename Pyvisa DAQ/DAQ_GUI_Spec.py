@@ -1,18 +1,23 @@
+"""
+Module for the SiPMs UGR DAQ spectrum functionality.
+"""
 import customtkinter as ctk
-import DAQ_GUI_func as func
+import daq_gui_func as func
 
-def settingSpec(self):
-
+def setting_spec(self):
+    """
+    Configure the settings for the Spectrum tab in the SiPMs UGR DAQ application.
+    """
     # create tabview
     self.tabviewSpec = ctk.CTkTabview(self.tabview.tab("Spectrum"), width=50)
     self.tabviewSpec.grid(row=0, column=0, padx=(5, 5), pady=(5, 5), sticky="nsew")
     self.tabviewSpec.add("DAQ")
     self.tabviewSpec.add("Analysis")
     self.tabviewSpec.tab("DAQ").grid_columnconfigure(0, weight=0)
-    self.tabviewSpec.tab("DAQ").grid_columnconfigure(1, weight=3)  
+    self.tabviewSpec.tab("DAQ").grid_columnconfigure(1, weight=3)
     self.tabviewSpec.tab("DAQ").grid_rowconfigure(0, weight=1)  # 100% de altura
     self.tabviewSpec.tab("Analysis").grid_columnconfigure(0, weight=0)
-    self.tabviewSpec.tab("Analysis").grid_columnconfigure(1, weight=3)  
+    self.tabviewSpec.tab("Analysis").grid_columnconfigure(1, weight=3)
     self.tabviewSpec.tab("Analysis").grid_rowconfigure(0, weight=1)  # 100% de altura
 
     # Spectrum tab settings
@@ -40,8 +45,12 @@ def settingSpec(self):
     self.ch4Spec.grid(row=3, column=1, padx=(0,0), pady=(5,5))
 
     # Crear el botón de start
-    self.startSpec_button = ctk.CTkButton(self.optionSpectrum, text="Start", command=self.startSpectrum)
-    self.startSpec_button.grid(row=10, column=0, padx=10, pady=(20,50), columnspan=2, sticky="s")
+    self.startSpec_button = ctk.CTkButton(self.optionSpectrum, text="Start", command=self.start_spectrum)
+    self.startSpec_button.grid(row=10, column=0, padx=10, pady=(20,5), columnspan=2, sticky="s")
+
+    # Crear el botón de stop
+    self.stopSpec_button = ctk.CTkButton(self.optionSpectrum, text="Stop", command=self.stop_spectrum, state="disable")
+    self.stopSpec_button.grid(row=11, column=0, padx=10, pady=(5,50), columnspan=2, sticky="s")
 
     # Crear el segundo contenedor (derecha)
     self.liveplot = ctk.CTkFrame(self.tabview.tab("Spectrum"))
@@ -55,5 +64,5 @@ def settingSpec(self):
     self.analysisSpec.grid(row=0, column=0, padx=5, pady=5, sticky="nsew")
 
     # Crear el botón de fitting
-    self.peaks_button = ctk.CTkButton(self.analysisSpec, text="Finder peaks", command=lambda: func.finding_peaks(self), width=120)
+    self.peaks_button = ctk.CTkButton(self.analysisSpec, text="Finder peaks",command=lambda: func.finding_peaks(self),width=120)
     self.peaks_button.grid(row=0, column=0, padx=(10), pady=(20,5))
