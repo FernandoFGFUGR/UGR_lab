@@ -50,10 +50,10 @@ def setting_wf(self):
     self.start_buttonWf.grid(row=10, column=0, padx=20, pady=(20,50), columnspan=2, sticky="s")
 
     # Crear el segundo contenedor (derecha)
-    self.plotWf = ctk.CTkFrame(self.tabview.tab("Waveform"))
-    self.plotWf.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")
-    self.plotWf.grid_rowconfigure(0, weight=1)
-    self.plotWf.grid_columnconfigure(0, weight=1)
+    self.plot_wf = ctk.CTkFrame(self.tabview.tab("Waveform"))
+    self.plot_wf.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")
+    self.plot_wf.grid_rowconfigure(0, weight=1)
+    self.plot_wf.grid_columnconfigure(0, weight=1)
 
     #Spectrum setting analisys
     # Crear el primer contenedor (izquierda)
@@ -67,11 +67,11 @@ def setting_wf(self):
     self.dcr_button = ctk.CTkButton(self.analysisWf, text="Calculate Dcr", command=lambda: func.start_dcr(self, self.dcr_output), width=120)
     self.dcr_button.grid(row=0, column=0, padx=(10), pady=(20,5), columnspan=2)
     # Crear el widget Text para mostrar la salida
-    self.dcr_Output = ctk.CTkTextbox(self.analysisWf, width=90, height=30, activate_scrollbars=False)
-    self.dcr_Output.grid(row=1, column=0, padx=(10), pady=(5,10), columnspan=2)
+    self.dcr_output = ctk.CTkTextbox(self.analysisWf, width=90, height=30, activate_scrollbars=False)
+    self.dcr_output.grid(row=1, column=0, padx=(10), pady=(5,10), columnspan=2)
 
-    self.sliderWf = ctk.CTkSlider(self.analysisWf, from_=0, to=1, command=lambda value: func.slider_event(self, value), number_of_steps=1)
-    self.sliderWf.grid(row=2, column=0, padx=(10), pady=(5,10), columnspan=2)
+    self.slider_wf = ctk.CTkSlider(self.analysisWf, from_=0, to=1, command=lambda value: func.slider_event(self, value), number_of_steps=1)
+    self.slider_wf.grid(row=2, column=0, padx=(10), pady=(5,10), columnspan=2)
 
     self.decrease_button = ctk.CTkButton(self.analysisWf, text="-", width=5, command=lambda: func.decrease_slider_value(self))
     self.decrease_button.grid(row=3, column=0, padx=10, pady=10, sticky="nsew")

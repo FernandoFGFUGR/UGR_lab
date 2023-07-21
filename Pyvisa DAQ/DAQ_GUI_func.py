@@ -385,7 +385,7 @@ def plot_example_wf(self):
 
     a_x.plot(x_x, y_y)
 
-    self.canvas = FigureCanvasTkAgg(fig, self.plotWf)
+    self.canvas = FigureCanvasTkAgg(fig, self.plot_wf)
     self.canvas.draw()
     self.canvas.get_tk_widget().grid(row=0, column=0, padx=20, pady=20, sticky="nsew")
 
@@ -720,10 +720,13 @@ def start_wf(self):
     Updates the slider range based on the number of files.
 
     """
-    entries = self.time_wf.get()
+    entries = self.timeWf.get()
+    if not entries:
+        entries=0
 
-    if not entries or not self.save_entry.get():
-        print("Introduce un valor a entries o nombre al fichero")
+    if not self.save_entry.get():
+        print("Introduce un nombre al fichero")
+
     else:
         name = self.save_entry.get()
         # Creacion de directorios por fechas y nombres
@@ -768,9 +771,10 @@ def start_wf(self):
         print("Finish waveform.")
         path_fd = path_d + "/DATA.txt"
         lm.delete_dir(path_fd)
-        time_base=lm.create_data(path_fd, rta, start_time, len(y_y))
+        [time_base, num_points]=lm.create_data(path_fd, rta, start_time, len(y_y))
         lm.create_zip(path_d, name)
-        self.pathWf.set(path_d)
+        self.path_wf.set(path_d)
+        self.num_points.set(num_points)
 
         rta.close()
         lm.beep()
@@ -785,22 +789,22 @@ def start_wf(self):
         # Borrar el histograma anterior
         self.ax.clear()
 
-        self.canvas = FigureCanvasTkAgg(fig, self.plotWf)
+        self.canvas = FigureCanvasTkAgg(fig, self.plot_wf)
         self.canvas.get_tk_widget().grid(row=0, column=0, padx=20, pady=20, sticky="nsew")
 
         # Plot de los nuevos datos
         self.ax.plot(x_x, y_y)
 
         # Configuración del gráfico
-        self.ax.set_xlabel('Time(s)')
-        self.ax.set_ylabel('Intensity(A)')
+        self.ax.set_xlabel('Time(S)')
+        self.ax.set_ylabel('Voltaje(V)')
 
         # Actualizar la figura
         fig.canvas.draw()
 
-        count=count_files(self)
+        [count,time]=count_files(self)
 
-        self.sliderWf.configure(to=count-1, number_of_steps=count-1)
+        self.slider_wf.configure(to=count-1, number_of_steps=count-1)
 
 def count_files(self):
     """
@@ -821,7 +825,15 @@ def count_files(self):
     # Contar los archivos con el prefijo deseado
     count = sum(1 for file in files if file.startswith(
         str(self.save_entry.get())+"_"))
-    return count
+    
+    path=path+"/"+str(self.save_entry.get())+"_0.txt"
+    
+    with open(path, 'r') as archivo:
+        time = archivo.readline()
+
+    result=[count, time]
+
+    return result
 
 
 def start_dcr(self, dcr_output):
@@ -839,9 +851,11 @@ def start_dcr(self, dcr_output):
     """
     dcr_output.configure(state="normal")
     dcr_output.delete("1.0", "end")
-    #print(str(round(count_files(self)/(float(self.timeWf.get())*60), 2)))
+
+    [num_files, time_files]=count_files(self)
+
     try:
-        dcr = round(count_files(self)/(float(self.timeWf.get())*60), 2)
+        dcr = round(num_files/(-float(time_files)), 2)
         dcr_output.insert("0.0", str(dcr)+" Hz")
     except Exception as e_error:
         print("Error al calcular el dcr:", e_error)
@@ -864,7 +878,8 @@ def slider_event(self, value):
 
     """
     print("Fichero n: "+ str(round(value)))
-    path = str(self.pathWf.get())+"/"+str(self.save_entry.get()) + \
+    
+    path = str(self.path_wf.get())+"/"+str(self.save_entry.get()) + \
         "_"+str(round(value))+".txt"
 
     with open(path, 'r', encoding='utf-8') as file:
@@ -873,7 +888,7 @@ def slider_event(self, value):
     data = [float(line.strip()) for line in lines]
 
     # Crear los puntos para el gráfico con 3752 valores
-    x_x = np.linspace(0, 1000, 4920)
+    x_x = np.linspace(0, 1000, int(self.num_points.get()))
 
     # Crear un nuevo lienzo (canvas) y configurar el grid
     fig = Figure(figsize=(6, 4), dpi=100)
@@ -882,15 +897,15 @@ def slider_event(self, value):
     # Borrar el histograma anterior
     self.ax.clear()
 
-    self.canvas = FigureCanvasTkAgg(fig, self.plotWf)
+    self.canvas = FigureCanvasTkAgg(fig, self.plot_wf)
     self.canvas.get_tk_widget().grid(row=0, column=0, padx=20, pady=20, sticky="nsew")
 
     # Plot de los nuevos datos
     self.ax.plot(x_x, data)
 
     # Configuración del gráfico
-    self.ax.set_xlabel('Time(s)')
-    self.ax.set_ylabel('Intensity(A)')
+    self.ax.set_xlabel('Time(S)')
+    self.ax.set_ylabel('Voltage(V)')
 
     # Actualizar la figura
     fig.canvas.draw()
@@ -912,10 +927,10 @@ def decrease_slider_value(self):
     current_value = round(self.slider_wf.get())
     if current_value > 0:
         new_value = current_value - 1
-        self.sliderWf.set(new_value)
+        self.slider_wf.set(new_value)
         print("Fichero n: "+ str(int(self.slider_wf.get())))
         path = str(self.path_wf.get())+"/"+str(self.save_entry.get()) + \
-            "_"+str(round(self.sliderWf.get()))+".txt"
+            "_"+str(round(self.slider_wf.get()))+".txt"
 
         with open(path, 'r', encoding='utf-8') as file:
             lines = file.readlines()[2:]  # Saltar las dos primeras líneas
@@ -923,7 +938,7 @@ def decrease_slider_value(self):
         data = [float(line.strip()) for line in lines]
 
         # Crear los puntos para el gráfico con 3752 valores
-        x_x = np.linspace(0, 1000, 4920)
+        x_x = np.linspace(0, 1000, int(self.num_points.get()))
 
         # Crear un nuevo lienzo (canvas) y configurar el grid
         fig = Figure(figsize=(6, 4), dpi=100)
@@ -939,8 +954,8 @@ def decrease_slider_value(self):
         self.ax.plot(x_x, data)
 
         # Configuración del gráfico
-        self.ax.set_xlabel('Time(s)')
-        self.ax.set_ylabel('Intensity(A)')
+        self.ax.set_xlabel('Time(S)')
+        self.ax.set_ylabel('Voltage(V)')
 
         # Actualizar la figura
         fig.canvas.draw()
@@ -965,7 +980,7 @@ def increase_slider_value(self):
 
     """
     current_value = round(self.slider_wf.get())
-    count=count_files(self)
+    [count, time]=count_files(self)
     if current_value < count:
         new_value = current_value + 1
         self.slider_wf.set(new_value)
@@ -979,7 +994,7 @@ def increase_slider_value(self):
         data = [float(line.strip()) for line in lines]
 
         # Crear los puntos para el gráfico con 3752 valores
-        x_x = np.linspace(0, 1000, 4920)
+        x_x = np.linspace(0, 1000, int(self.num_points.get()))
 
         # Crear un nuevo lienzo (canvas) y configurar el grid
         fig = Figure(figsize=(6, 4), dpi=100)
@@ -995,8 +1010,8 @@ def increase_slider_value(self):
         self.ax.plot(x_x, data)
 
         # Configuración del gráfico
-        self.ax.set_xlabel('Time(s)')
-        self.ax.set_ylabel('Intensity(A)')
+        self.ax.set_xlabel('Time(S)')
+        self.ax.set_ylabel('Voltage(V)')
 
         # Actualizar la figura
         fig.canvas.draw()

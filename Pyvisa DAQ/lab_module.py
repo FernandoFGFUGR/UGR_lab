@@ -86,7 +86,10 @@ def create_data(path, rta, startTime, len):
         f.write('Time base scale: ' + str(timeB) + ' s'+ '\n')  
         f.write('Trigger (0.5PE): ' +str(trigger)+ ' v' +'\n')
         f.write('Tiempo de ejecucion: ' +str(round(((currentTime() - startTime)/60),2))+ ' min' +'\n')
-    return timeB
+    
+    result=[timeB, str(len)]
+
+    return result
 
 #Func generacion de ficheros (waveform)
 def file_writer_wf(path, tsr, y, i):

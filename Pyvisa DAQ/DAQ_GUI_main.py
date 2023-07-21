@@ -109,6 +109,7 @@ class App(customtkinter.CTk):
         self.values_aux = customtkinter.StringVar()
         self.hist_data = customtkinter.StringVar()
         self.path_wf = customtkinter.StringVar()
+        self.num_points = customtkinter.StringVar()
 
         # Title and geometry
         self.title("SiPMs UGR DAQ")

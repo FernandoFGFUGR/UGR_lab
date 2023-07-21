@@ -41,6 +41,7 @@ for i in range(int(trigg)):
     
     rta.write(ds.selectCurr(trigg, i))
     y_aux=rta.query(ds.waveform(channel))
+    #print(y_aux)
     y=[float(i) for i in y_aux.split(',')]
 
     lm.waiting(rta)

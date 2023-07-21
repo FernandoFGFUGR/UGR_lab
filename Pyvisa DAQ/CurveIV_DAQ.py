@@ -18,7 +18,7 @@ if named == "i":
     named="_inverse"
     sStep=0.05
     vStart=-0
-    vStop=-45
+    vStop=-60
 else:
     named="_direct"
     sStep=0.01
@@ -56,7 +56,7 @@ smu.write(ds.smuAuto3)
 
 count=0
 
-for j in range(6):
+for j in range(1):
 
     print('Pulse intro para comenzar prueba ' + str(j+1) + ': ')
     input()

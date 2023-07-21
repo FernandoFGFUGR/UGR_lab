@@ -104,7 +104,7 @@ if __name__ == "__main__":
     entries=int(input())
 
     #Creacion de directorios por fechas y nombres
-    path=lm.path("Charge_hist")
+    path=lm.path("Spectrum")
     lm.create_dir(path)
     pathF=path + name
 
